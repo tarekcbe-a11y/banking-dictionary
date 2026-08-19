@@ -46,5 +46,37 @@
     "title_en": "Treasury Bills",
     "desc_ar": "أدوات دين حكومية قصيرة الأجل تصدرها وزارة المالية لاقتراض الأموال من السوق.",
     "desc_en": "Short-term government debt instruments issued by the Ministry of Finance to borrow money from the market."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "حساب التوفير",
+    "title_en": "Savings Account",
+    "desc_ar": "حساب بنكي يتيح للعملاء إيداع أموالهم والحصول على فائدة دورية مع سهولة السحب.",
+    "desc_en": "A bank account that allows customers to deposit money and earn periodic interest with ease of withdrawal."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "التمويل العقاري",
+    "title_en": "Mortgage Finance",
+    "desc_ar": "قرض طويل الأجل مخصص لشراء أو بناء عقار، بضمان رهن هذا العقار للبنك.",
+    "desc_en": "A long-term loan designated for purchasing or building a property, secured by mortgaging that property to the bank."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "الأسهم",
+    "title_en": "Stocks",
+    "desc_ar": "صكوك تثبت ملكية حاملها في رأس مال شركة معينة، وتمنحه حقاً في أرباحها.",
+    "desc_en": "Certificates proving the holder's ownership in a company's capital, granting them a right to its profits."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "سياسة نقدية",
+    "title_en": "Monetary Policy",
+    "desc_ar": "الإجراءات التي يتخذها البنك المركزي للتحكم في عرض النقد وأسعار الفائدة لتحقيق الاستقرار.",
+    "desc_en": "Actions taken by the central bank to control money supply and interest rates to achieve economic stability."
   }
 ]
