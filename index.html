@@ -154,7 +154,6 @@
             right: 15px;
         }
         
-        /* ضبط الارتفاع لـ 2 كارت فقط مع السكرول الداخلي */
         #termsContainer {
             max-height: 280px; 
             overflow-y: auto;
@@ -235,12 +234,16 @@
             <p class="subtitle" id="siteSubtitle">موسوعة المصطلحات المصرفية</p>
         </div>
 
+        <!-- شريط الأقسام الشاملة -->
         <div class="categories-bar" id="categoriesBar">
-            <button class="cat-btn active" onclick="filterByCategory('all', this)" data-cat="all">الكل</button>
-            <button class="cat-btn" onclick="filterByCategory('البنك المركزي', this)" data-cat="البنك المركزي">البنك المركزي</button>
-            <button class="cat-btn" onclick="filterByCategory('الاستثمار', this)" data-cat="الاستثمار">الاستثمار</button>
-            <button class="cat-btn" onclick="filterByCategory('القروض', this)" data-cat="القروض">القروض</button>
-            <button class="cat-btn" onclick="filterByCategory('البنوك', this)" data-cat="البنوك">البنوك</button>
+            <button class="cat-btn active" onclick="filterByCategory('all', this)" data-cat="all" data-ar="الكل" data-en="All">الكل</button>
+            <button class="cat-btn" onclick="filterByCategory('البنك المركزي', this)" data-cat="البنك المركزي" data-ar="البنك المركزي" data-en="Central Bank">البنك المركزي</button>
+            <button class="cat-btn" onclick="filterByCategory('المؤسسات الدولية', this)" data-cat="المؤسسات الدولية" data-ar="المؤسسات الدولية" data-en="Int. Institutions">المؤسسات الدولية</button>
+            <button class="cat-btn" onclick="filterByCategory('الاستثمار', this)" data-cat="الاستثمار" data-ar="الاستثمار" data-en="Investment">الاستثمار</button>
+            <button class="cat-btn" onclick="filterByCategory('البورصة', this)" data-cat="البورصة" data-ar="البورصة" data-en="Stock Exchange">البورصة</button>
+            <button class="cat-btn" onclick="filterByCategory('التكنولوجيا المالية', this)" data-cat="التكنولوجيا المالية" data-ar="التكنولوجيا المالية" data-en="Fintech">التكنولوجيا المالية</button>
+            <button class="cat-btn" onclick="filterByCategory('القروض', this)" data-cat="القروض" data-ar="القروض" data-en="Loans">القروض</button>
+            <button class="cat-btn" onclick="filterByCategory('البنوك', this)" data-cat="البنوك" data-ar="البنوك" data-en="Banks">البنوك</button>
         </div>
 
         <div class="search-box-wrapper">
@@ -276,7 +279,6 @@
                 searchPlaceholder: "ابحث عن أي مصطلح اقتصادي أو مصرفي...",
                 langBtn: "English",
                 dir: "rtl",
-                allCat: "الكل",
                 loading: "جاري تحميل المصطلحات...",
                 noResults: "لا توجد نتائج مطابقة"
             },
@@ -287,7 +289,6 @@
                 searchPlaceholder: "Search for any economic or banking term...",
                 langBtn: "العربية",
                 dir: "ltr",
-                allCat: "All",
                 loading: "Loading terms...",
                 noResults: "No matching results"
             }
@@ -335,6 +336,7 @@
             if (!allTerms || allTerms.length === 0) return;
 
             const filtered = allTerms.filter(term => {
+                // الفلترة بالقسم بالعربي أو الإنجليزي لضمان التوافق التام
                 const matchesCategory = selectedCategory === 'all' || 
                     term.category_ar === selectedCategory || 
                     term.category_en === selectedCategory;
@@ -380,7 +382,10 @@
             document.getElementById('searchInput').setAttribute('placeholder', t.searchPlaceholder);
             document.getElementById('langToggleBtn').innerText = t.langBtn;
 
-            document.querySelector('.cat-btn[data-cat="all"]').innerText = t.allCat;
+            // تحديث نصوص أزرار الأقسام تلقائياً بين العربي والإنجليزي
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.innerText = btn.getAttribute(`data-${currentLang}`);
+            });
 
             filterTerms();
         }
