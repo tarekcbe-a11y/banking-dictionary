@@ -3,127 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">موسوعة المصطلحات المصرفية</title>
+    <title id="pageTitle">موسوعة المصطلحات المصرفية - جروب عملاء البنوك المصرية</title>
     <style>
         :root {
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-            --primary-color: #0d6efd;
-            --border-color: #dee2e6;
+            --bg-color: #0b132b;
+            --card-bg: #1c2541;
+            --text-color: #ffffff;
+            --gold-color: #f4d35e;
+            --border-color: #3a506b;
+            --input-bg: #101828;
         }
         body {
             font-family: Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .main-wrapper {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid var(--gold-color);
+            border-radius: 16px;
             padding: 20px;
+            background-color: var(--bg-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-sizing: border-box;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        header {
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            background: var(--card-bg);
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        h1 {
-            margin: 0;
-            font-size: 22px;
-            color: var(--primary-color);
+            margin-bottom: 20px;
         }
         .lang-btn {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--gold-color);
+            color: #0b132b;
             border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
+            padding: 8px 18px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 14px;
+        }
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--gold-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--gold-color);
+            text-align: center;
+            background: var(--card-bg);
+        }
+        .site-title-area {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: var(--gold-color);
+            font-size: 24px;
+            margin: 0 0 5px 0;
+        }
+        .subtitle {
+            color: #adb5bd;
+            font-size: 14px;
+            margin: 0;
+        }
+        .categories-bar {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            scrollbar-width: none;
+        }
+        .categories-bar::-webkit-scrollbar {
+            display: none;
+        }
+        .cat-btn {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .cat-btn.active, .cat-btn:hover {
+            background-color: var(--gold-color);
+            color: #0b132b;
+            border-color: var(--gold-color);
+            font-weight: bold;
+        }
+        .search-box-wrapper {
+            position: relative;
+            margin-bottom: 25px;
         }
         .search-box {
             width: 100%;
-            padding: 12px;
-            font-size: 16px;
+            padding: 12px 40px 12px 40px;
+            font-size: 15px;
+            background-color: var(--input-bg);
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            margin-bottom: 20px;
+            border-radius: 12px;
+            color: white;
             box-sizing: border-box;
+            outline: none;
+        }
+        .search-box:focus {
+            border-color: var(--gold-color);
+        }
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+        [dir="ltr"] .search-icon {
+            right: auto;
+            left: 15px;
+        }
+        .clear-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #2a3a5e;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        [dir="ltr"] .clear-icon {
+            left: auto;
+            right: 15px;
         }
         .term-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
         }
         .term-category {
-            font-size: 12px;
-            color: #6c757d;
+            font-size: 11px;
+            color: var(--gold-color);
             text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             font-weight: bold;
         }
         .term-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            color: #212529;
-            margin-bottom: 8px;
+            color: #ffffff;
+            margin-bottom: 6px;
         }
         .term-desc {
-            font-size: 14px;
-            color: #555555;
-            line-height: 1.5;
+            font-size: 13px;
+            color: #d1d5db;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .footer-divider {
+            border: none;
+            border-top: 1px dashed var(--border-color);
+            margin: 25px 0 15px 0;
+        }
+        footer {
+            text-align: center;
+        }
+        .footer-text {
+            color: var(--gold-color);
+            font-size: 13px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .developer-text {
+            color: #9ca3af;
+            font-size: 12px;
             margin: 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1 id="siteTitle">موسوعة المصطلحات المصرفية</h1>
+    <div class="main-wrapper">
+        <div class="header-top">
             <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
-        </header>
+            <div class="logo-placeholder" id="logoText">شعار</div>
+        </div>
 
-        <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن أي مصطلح مصرفي..." onkeyup="filterTerms()">
+        <div class="site-title-area">
+            <h1 id="siteMainTitle">جروب عملاء البنوك المصرية</h1>
+            <p class="subtitle" id="siteSubtitle">موسوعة المصطلحات المصرفية</p>
+        </div>
+
+        <!-- أزرار الأقسام الأفقية -->
+        <div class="categories-bar" id="categoriesBar">
+            <button class="cat-btn active" onclick="filterByCategory('all', this)" data-cat="all">الكل</button>
+            <button class="cat-btn" onclick="filterByCategory('البنك المركزي', this)" data-cat="البنك المركزي">البنك المركزي</button>
+            <button class="cat-btn" onclick="filterByCategory('الاستثمار', this)" data-cat="الاستثمار">الاستثمار</button>
+            <button class="cat-btn" onclick="filterByCategory('القروض', this)" data-cat="القروض">القروض</button>
+            <button class="cat-btn" onclick="filterByCategory('البنوك', this)" data-cat="البنوك">البنوك</button>
+        </div>
+
+        <div class="search-box-wrapper">
+            <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن أي مصطلح اقتصادي أو مصرفي..." onkeyup="filterTerms()">
+            <span class="search-icon">🔍</span>
+            <button class="clear-icon" onclick="clearSearch()">×</button>
+        </div>
 
         <div id="termsContainer">
-            <!-- سيتم تحميل المصطلحات هنا ديناميكياً -->
+            <!-- جاري تحميل المصطلحات -->
         </div>
+
+        <hr class="footer-divider">
+
+        <footer>
+            <p class="footer-text" id="footerGroupName">🛡️ جروب عملاء البنوك المصرية</p>
+            <p class="developer-text">Developed by Tarek Metwally</p>
+        </footer>
     </div>
 
     <script>
-        // رابط ملف الـ JSON المباشر من جيت هب الخاص بك
         const jsonUrl = "https://raw.githubusercontent.com/tarekcbe-a11y/banking-dictionary/main/terms.json";
 
         let currentLang = 'ar';
         let allTerms = [];
+        let selectedCategory = 'all';
 
-        // قاموس ترجمة عناصر الواجهة بالكامل (الأدوات والرسائل)
         const translations = {
             ar: {
-                title: "موسوعة المصطلحات المصرفية",
-                searchPlaceholder: "ابحث عن أي مصطلح مصرفي...",
+                pageTitle: "موسوعة المصطلحات المصرفية - جروب عملاء البنوك المصرية",
+                siteMainTitle: "جروب عملاء البنوك المصرية",
+                siteSubtitle: "موسوعة المصطلحات المصرفية",
+                searchPlaceholder: "ابحث عن أي مصطلح اقتصادي أو مصرفي...",
                 langBtn: "English",
-                dir: "rtl"
+                dir: "rtl",
+                allCat: "الكل",
+                loading: "جاري تحميل المصطلحات...",
+                noResults: "لا توجد نتائج مطابقة"
             },
             en: {
-                title: "Banking Terms Encyclopedia",
-                searchPlaceholder: "Search for any banking term...",
+                pageTitle: "Banking Terms Encyclopedia - Egyptian Bank Customers Group",
+                siteMainTitle: "Egyptian Bank Customers Group",
+                siteSubtitle: "Banking Terms Encyclopedia",
+                searchPlaceholder: "Search for any economic or banking term...",
                 langBtn: "العربية",
-                dir: "ltr"
+                dir: "ltr",
+                allCat: "All",
+                loading: "Loading terms...",
+                noResults: "No matching results"
             }
         };
 
-        // جلب البيانات من جيت هب فور فتح الصفحة
         async function fetchTerms() {
             try {
                 const response = await fetch(jsonUrl);
@@ -131,60 +279,91 @@
                 displayTerms(allTerms);
             } catch (error) {
                 console.error("Error loading terms:", error);
-                document.getElementById('termsContainer').innerHTML = '<p style="text-align:center; color:red;">تعذر تحميل المصطلحات، تأكد من الاتصال أو صحة الرابط.</p>';
+                document.getElementById('termsContainer').innerHTML = `<p style="text-align:center; color:#ff6b6b;">${currentLang === 'ar' ? 'تعذر تحميل المصطلحات.' : 'Failed to load terms.'}</p>`;
             }
         }
 
-        // عرض المصطلحات داخل الكروت
         function displayTerms(terms) {
             const container = document.getElementById('termsContainer');
             container.innerHTML = '';
 
             if (terms.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:#777;">${currentLang === 'ar' ? 'لا توجد نتائج مطابقة' : 'No matching results'}</p>`;
+                container.innerHTML = `<p style="text-align:center; color:#9ca3af;">${translations[currentLang].noResults}</p>`;
                 return;
             }
 
             terms.forEach(term => {
+                const category = currentLang === 'ar' ? term.category_ar : term.category_en;
+                const title = currentLang === 'ar' ? term.title_ar : term.title_en;
+                const desc = currentLang === 'ar' ? term.desc_ar : term.desc_en;
+
                 const card = document.createElement('div');
                 card.className = 'term-card';
                 card.innerHTML = `
-                    <div class="term-category">${term.category}</div>
-                    <div class="term-title">${term.title}</div>
-                    <p class="term-desc">${term.desc}</p>
+                    <div class="term-category">${category}</div>
+                    <div class="term-title">${title}</div>
+                    <p class="term-desc">${desc}</p>
                 `;
                 container.appendChild(card);
             });
         }
 
-        // محرك البحث الحي
         function filterTerms() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = allTerms.filter(term => 
-                term.title.toLowerCase().includes(query) || 
-                term.desc.toLowerCase().includes(query) ||
-                term.category.toLowerCase().includes(query)
-            );
+            
+            const filtered = allTerms.filter(term => {
+                const matchesCategory = selectedCategory === 'all' || 
+                    term.category_ar === selectedCategory || 
+                    term.category_en === selectedCategory;
+
+                const matchesQuery = 
+                    term.title_ar.toLowerCase().includes(query) || 
+                    term.title_en.toLowerCase().includes(query) ||
+                    term.desc_ar.toLowerCase().includes(query) ||
+                    term.desc_en.toLowerCase().includes(query) ||
+                    term.category_ar.toLowerCase().includes(query) ||
+                    term.category_en.toLowerCase().includes(query);
+
+                return matchesCategory && matchesQuery;
+            });
+
             displayTerms(filtered);
         }
 
-        // تبديل اللغة وتحديث كافة الأدوات
+        function filterByCategory(category, btnElement) {
+            selectedCategory = category;
+            
+            // تحديث شكل الأزرار النشطة
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            filterTerms();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            filterTerms();
+        }
+
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             const t = translations[currentLang];
 
-            // تحديث اتجاه الصفحة ولغتها
             document.getElementById('htmlRoot').setAttribute('lang', currentLang);
             document.getElementById('htmlRoot').setAttribute('dir', t.dir);
 
-            // تحديث نصوص الواجهة والأدوات
-            document.getElementById('pageTitle').innerText = t.title;
-            document.getElementById('siteTitle').innerText = t.title;
+            document.getElementById('pageTitle').innerText = t.pageTitle;
+            document.getElementById('siteMainTitle').innerText = t.siteMainTitle;
+            document.getElementById('siteSubtitle').innerText = t.siteSubtitle;
             document.getElementById('searchInput').setAttribute('placeholder', t.searchPlaceholder);
             document.getElementById('langToggleBtn').innerText = t.langBtn;
+
+            // تحديث زر الكل بناءً على اللغة
+            document.querySelector('.cat-btn[data-cat="all"]').innerText = t.allCat;
+
+            filterTerms();
         }
 
-        // تشغيل الدالة عند تحميل الصفحة
         window.onload = fetchTerms;
     </script>
 
