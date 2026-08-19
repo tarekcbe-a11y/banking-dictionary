@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">موسوعة المصطلحات المصرفية</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --primary-color: #0d6efd;
+            --border-color: #dee2e6;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        h1 {
+            margin: 0;
+            font-size: 22px;
+            color: var(--primary-color);
+        }
+        .lang-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .term-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .term-category {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .term-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #212529;
+            margin-bottom: 8px;
+        }
+        .term-desc {
+            font-size: 14px;
+            color: #555555;
+            line-height: 1.5;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1 id="siteTitle">موسوعة المصطلحات المصرفية</h1>
+            <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
+        </header>
+
+        <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن أي مصطلح مصرفي..." onkeyup="filterTerms()">
+
+        <div id="termsContainer">
+            <!-- سيتم تحميل المصطلحات هنا ديناميكياً -->
+        </div>
+    </div>
+
+    <script>
+        // رابط ملف الـ JSON المباشر من جيت هب الخاص بك
+        const jsonUrl = "https://raw.githubusercontent.com/tarekcbe-a11y/banking-dictionary/main/terms.json";
+
+        let currentLang = 'ar';
+        let allTerms = [];
+
+        // قاموس ترجمة عناصر الواجهة بالكامل (الأدوات والرسائل)
+        const translations = {
+            ar: {
+                title: "موسوعة المصطلحات المصرفية",
+                searchPlaceholder: "ابحث عن أي مصطلح مصرفي...",
+                langBtn: "English",
+                dir: "rtl"
+            },
+            en: {
+                title: "Banking Terms Encyclopedia",
+                searchPlaceholder: "Search for any banking term...",
+                langBtn: "العربية",
+                dir: "ltr"
+            }
+        };
+
+        // جلب البيانات من جيت هب فور فتح الصفحة
+        async function fetchTerms() {
+            try {
+                const response = await fetch(jsonUrl);
+                allTerms = await response.json();
+                displayTerms(allTerms);
+            } catch (error) {
+                console.error("Error loading terms:", error);
+                document.getElementById('termsContainer').innerHTML = '<p style="text-align:center; color:red;">تعذر تحميل المصطلحات، تأكد من الاتصال أو صحة الرابط.</p>';
+            }
+        }
+
+        // عرض المصطلحات داخل الكروت
+        function displayTerms(terms) {
+            const container = document.getElementById('termsContainer');
+            container.innerHTML = '';
+
+            if (terms.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:#777;">${currentLang === 'ar' ? 'لا توجد نتائج مطابقة' : 'No matching results'}</p>`;
+                return;
+            }
+
+            terms.forEach(term => {
+                const card = document.createElement('div');
+                card.className = 'term-card';
+                card.innerHTML = `
+                    <div class="term-category">${term.category}</div>
+                    <div class="term-title">${term.title}</div>
+                    <p class="term-desc">${term.desc}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // محرك البحث الحي
+        function filterTerms() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allTerms.filter(term => 
+                term.title.toLowerCase().includes(query) || 
+                term.desc.toLowerCase().includes(query) ||
+                term.category.toLowerCase().includes(query)
+            );
+            displayTerms(filtered);
+        }
+
+        // تبديل اللغة وتحديث كافة الأدوات
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const t = translations[currentLang];
+
+            // تحديث اتجاه الصفحة ولغتها
+            document.getElementById('htmlRoot').setAttribute('lang', currentLang);
+            document.getElementById('htmlRoot').setAttribute('dir', t.dir);
+
+            // تحديث نصوص الواجهة والأدوات
+            document.getElementById('pageTitle').innerText = t.title;
+            document.getElementById('siteTitle').innerText = t.title;
+            document.getElementById('searchInput').setAttribute('placeholder', t.searchPlaceholder);
+            document.getElementById('langToggleBtn').innerText = t.langBtn;
+        }
+
+        // تشغيل الدالة عند تحميل الصفحة
+        window.onload = fetchTerms;
+    </script>
+
+</body>
+</html>
