@@ -154,7 +154,7 @@
             right: 15px;
         }
         
-        /* ضبط الارتفاع لـ 2 كارت فقط */
+        /* ضبط الارتفاع لـ 2 كارت فقط مع السكرول الداخلي */
         #termsContainer {
             max-height: 280px; 
             overflow-y: auto;
@@ -308,7 +308,7 @@
             const container = document.getElementById('termsContainer');
             container.innerHTML = '';
 
-            if (terms.length === 0) {
+            if (!terms || terms.length === 0) {
                 container.innerHTML = `<p style="text-align:center; color:#9ca3af; padding: 20px;">${translations[currentLang].noResults}</p>`;
                 return;
             }
@@ -330,20 +330,22 @@
         }
 
         function filterTerms() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
             
+            if (!allTerms || allTerms.length === 0) return;
+
             const filtered = allTerms.filter(term => {
                 const matchesCategory = selectedCategory === 'all' || 
                     term.category_ar === selectedCategory || 
                     term.category_en === selectedCategory;
 
                 const matchesQuery = 
-                    term.title_ar.toLowerCase().includes(query) || 
-                    term.title_en.toLowerCase().includes(query) ||
-                    term.desc_ar.toLowerCase().includes(query) ||
-                    term.desc_en.toLowerCase().includes(query) ||
-                    term.category_ar.toLowerCase().includes(query) ||
-                    term.category_en.toLowerCase().includes(query);
+                    (term.title_ar && term.title_ar.toLowerCase().includes(query)) || 
+                    (term.title_en && term.title_en.toLowerCase().includes(query)) ||
+                    (term.desc_ar && term.desc_ar.toLowerCase().includes(query)) ||
+                    (term.desc_en && term.desc_en.toLowerCase().includes(query)) ||
+                    (term.category_ar && term.category_ar.toLowerCase().includes(query)) ||
+                    (term.category_en && term.category_en.toLowerCase().includes(query));
 
                 return matchesCategory && matchesQuery;
             });
