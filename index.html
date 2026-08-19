@@ -105,7 +105,7 @@
         }
         .search-box-wrapper {
             position: relative;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .search-box {
             width: 100%;
@@ -153,6 +153,28 @@
             left: auto;
             right: 15px;
         }
+        
+        /* صندوق عرض المصطلحات مع تثبيت الارتفاع لـ 3 كروت وتفعيل السكرول الداخلي */
+        #termsContainer {
+            max-height: 410px;
+            overflow-y: auto;
+            padding-right: 4px;
+            padding-left: 4px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold-color) var(--card-bg);
+        }
+        #termsContainer::-webkit-scrollbar {
+            width: 6px;
+        }
+        #termsContainer::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+        #termsContainer::-webkit-scrollbar-thumb {
+            background-color: var(--gold-color);
+            border-radius: 10px;
+        }
+
         .term-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -182,7 +204,7 @@
         .footer-divider {
             border: none;
             border-top: 1px dashed var(--border-color);
-            margin: 25px 0 15px 0;
+            margin: 20px 0 15px 0;
         }
         footer {
             text-align: center;
@@ -288,7 +310,7 @@
             container.innerHTML = '';
 
             if (terms.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:#9ca3af;">${translations[currentLang].noResults}</p>`;
+                container.innerHTML = `<p style="text-align:center; color:#9ca3af; padding: 20px;">${translations[currentLang].noResults}</p>`;
                 return;
             }
 
@@ -333,7 +355,6 @@
         function filterByCategory(category, btnElement) {
             selectedCategory = category;
             
-            // تحديث شكل الأزرار النشطة
             document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
 
@@ -358,7 +379,6 @@
             document.getElementById('searchInput').setAttribute('placeholder', t.searchPlaceholder);
             document.getElementById('langToggleBtn').innerText = t.langBtn;
 
-            // تحديث زر الكل بناءً على اللغة
             document.querySelector('.cat-btn[data-cat="all"]').innerText = t.allCat;
 
             filterTerms();
