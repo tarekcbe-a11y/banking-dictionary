@@ -1,12 +1,18 @@
 [
   {
-    "category": "البنك المركزي",
-    "title": "سعر الفائدة الأساسي",
-    "desc": "السعر الذي يحدده البنك المركزي لتوجيه السياسة النقدية."
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "سعر الفائدة الأساسي",
+    "title_en": "Base Interest Rate",
+    "desc_ar": "السعر الذي يحدده البنك المركزي لتوجيه السياسة النقدية.",
+    "desc_en": "The rate set by the central bank to guide monetary policy."
   },
   {
-    "category": "البنوك",
-    "title": "الاعتمادات المستندية",
-    "desc": "تعهد كتابي من البنك بضمان سداد قيمة البضائع للمستورد."
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الاعتمادات المستندية",
+    "title_en": "Letters of Credit",
+    "desc_ar": "تعهد كتابي من البنك بضمان سداد قيمة البضائع للمستورد.",
+    "desc_en": "A written undertaking by a bank guaranteeing payment for goods to the importer."
   }
 ]
