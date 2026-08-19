@@ -1,397 +1,2642 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl" id="htmlRoot">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">موسوعة المصطلحات المصرفية - جروب عملاء البنوك المصرية</title>
-    <style>
-        :root {
-            --bg-color: #0b132b;
-            --card-bg: #1c2541;
-            --text-color: #ffffff;
-            --gold-color: #f4d35e;
-            --border-color: #3a506b;
-            --input-bg: #101828;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-        }
-        .main-wrapper {
-            width: 100%;
-            max-width: 600px;
-            border: 2px solid var(--gold-color);
-            border-radius: 16px;
-            padding: 20px;
-            background-color: var(--bg-color);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            box-sizing: border-box;
-        }
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .lang-btn {
-            background-color: var(--gold-color);
-            color: #0b132b;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .logo-placeholder {
-            width: 50px;
-            height: 50px;
-            border: 2px solid var(--gold-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: var(--gold-color);
-            text-align: center;
-            background: var(--card-bg);
-        }
-        .site-title-area {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: var(--gold-color);
-            font-size: 24px;
-            margin: 0 0 5px 0;
-        }
-        .subtitle {
-            color: #adb5bd;
-            font-size: 14px;
-            margin: 0;
-        }
-        .categories-bar {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            scrollbar-width: none;
-        }
-        .categories-bar::-webkit-scrollbar {
-            display: none;
-        }
-        .cat-btn {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            white-space: nowrap;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-        .cat-btn.active, .cat-btn:hover {
-            background-color: var(--gold-color);
-            color: #0b132b;
-            border-color: var(--gold-color);
-            font-weight: bold;
-        }
-        .search-box-wrapper {
-            position: relative;
-            margin-bottom: 20px;
-        }
-        .search-box {
-            width: 100%;
-            padding: 12px 40px 12px 40px;
-            font-size: 15px;
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            color: white;
-            box-sizing: border-box;
-            outline: none;
-        }
-        .search-box:focus {
-            border-color: var(--gold-color);
-        }
-        .search-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 16px;
-        }
-        [dir="ltr"] .search-icon {
-            right: auto;
-            left: 15px;
-        }
-        .clear-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #2a3a5e;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        [dir="ltr"] .clear-icon {
-            left: auto;
-            right: 15px;
-        }
-        
-        #termsContainer {
-            max-height: 280px; 
-            overflow-y: auto;
-            padding-right: 4px;
-            padding-left: 4px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--gold-color) var(--card-bg);
-        }
-        #termsContainer::-webkit-scrollbar {
-            width: 6px;
-        }
-        #termsContainer::-webkit-scrollbar-track {
-            background: var(--card-bg);
-            border-radius: 10px;
-        }
-        #termsContainer::-webkit-scrollbar-thumb {
-            background-color: var(--gold-color);
-            border-radius: 10px;
-        }
-
-        .term-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 12px;
-        }
-        .term-category {
-            font-size: 11px;
-            color: var(--gold-color);
-            text-transform: uppercase;
-            margin-bottom: 4px;
-            font-weight: bold;
-        }
-        .term-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 6px;
-        }
-        .term-desc {
-            font-size: 13px;
-            color: #d1d5db;
-            line-height: 1.4;
-            margin: 0;
-        }
-        .footer-divider {
-            border: none;
-            border-top: 1px dashed var(--border-color);
-            margin: 20px 0 15px 0;
-        }
-        footer {
-            text-align: center;
-        }
-        .footer-text {
-            color: var(--gold-color);
-            font-size: 13px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .developer-text {
-            color: #9ca3af;
-            font-size: 12px;
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="main-wrapper">
-        <div class="header-top">
-            <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
-            <div class="logo-placeholder" id="logoText">شعار</div>
-        </div>
-
-        <div class="site-title-area">
-            <h1 id="siteMainTitle">جروب عملاء البنوك المصرية</h1>
-            <p class="subtitle" id="siteSubtitle">موسوعة المصطلحات المصرفية</p>
-        </div>
-
-        <!-- شريط الأقسام الشاملة -->
-        <div class="categories-bar" id="categoriesBar">
-            <button class="cat-btn active" onclick="filterByCategory('all', this)" data-cat="all" data-ar="الكل" data-en="All">الكل</button>
-            <button class="cat-btn" onclick="filterByCategory('البنك المركزي', this)" data-cat="البنك المركزي" data-ar="البنك المركزي" data-en="Central Bank">البنك المركزي</button>
-            <button class="cat-btn" onclick="filterByCategory('المؤسسات الدولية', this)" data-cat="المؤسسات الدولية" data-ar="المؤسسات الدولية" data-en="Int. Institutions">المؤسسات الدولية</button>
-            <button class="cat-btn" onclick="filterByCategory('الاستثمار', this)" data-cat="الاستثمار" data-ar="الاستثمار" data-en="Investment">الاستثمار</button>
-            <button class="cat-btn" onclick="filterByCategory('البورصة', this)" data-cat="البورصة" data-ar="البورصة" data-en="Stock Exchange">البورصة</button>
-            <button class="cat-btn" onclick="filterByCategory('التكنولوجيا المالية', this)" data-cat="التكنولوجيا المالية" data-ar="التكنولوجيا المالية" data-en="Fintech">التكنولوجيا المالية</button>
-            <button class="cat-btn" onclick="filterByCategory('القروض', this)" data-cat="القروض" data-ar="القروض" data-en="Loans">القروض</button>
-            <button class="cat-btn" onclick="filterByCategory('البنوك', this)" data-cat="البنوك" data-ar="البنوك" data-en="Banks">البنوك</button>
-        </div>
-
-        <div class="search-box-wrapper">
-            <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن أي مصطلح اقتصادي أو مصرفي..." onkeyup="filterTerms()">
-            <span class="search-icon">🔍</span>
-            <button class="clear-icon" onclick="clearSearch()">×</button>
-        </div>
-
-        <div id="termsContainer">
-            <!-- جاري تحميل المصطلحات -->
-        </div>
-
-        <hr class="footer-divider">
-
-        <footer>
-            <p class="footer-text" id="footerGroupName">🛡️ جروب عملاء البنوك المصرية</p>
-            <p class="developer-text">Developed by Tarek Metwally</p>
-        </footer>
-    </div>
-
-    <script>
-        const jsonUrl = "https://raw.githubusercontent.com/tarekcbe-a11y/banking-dictionary/main/terms.json";
-
-        let currentLang = 'ar';
-        let allTerms = [];
-        let selectedCategory = 'all';
-
-        const translations = {
-            ar: {
-                pageTitle: "موسوعة المصطلحات المصرفية - جروب عملاء البنوك المصرية",
-                siteMainTitle: "جروب عملاء البنوك المصرية",
-                siteSubtitle: "موسوعة المصطلحات المصرفية",
-                searchPlaceholder: "ابحث عن أي مصطلح اقتصادي أو مصرفي...",
-                langBtn: "English",
-                dir: "rtl",
-                loading: "جاري تحميل المصطلحات...",
-                noResults: "لا توجد نتائج مطابقة"
-            },
-            en: {
-                pageTitle: "Banking Terms Encyclopedia - Egyptian Bank Customers Group",
-                siteMainTitle: "Egyptian Bank Customers Group",
-                siteSubtitle: "Banking Terms Encyclopedia",
-                searchPlaceholder: "Search for any economic or banking term...",
-                langBtn: "العربية",
-                dir: "ltr",
-                loading: "Loading terms...",
-                noResults: "No matching results"
-            }
-        };
-
-        async function fetchTerms() {
-            try {
-                const response = await fetch(jsonUrl);
-                allTerms = await response.json();
-                displayTerms(allTerms);
-            } catch (error) {
-                console.error("Error loading terms:", error);
-                document.getElementById('termsContainer').innerHTML = `<p style="text-align:center; color:#ff6b6b;">${currentLang === 'ar' ? 'تعذر تحميل المصطلحات.' : 'Failed to load terms.'}</p>`;
-            }
-        }
-
-        function displayTerms(terms) {
-            const container = document.getElementById('termsContainer');
-            container.innerHTML = '';
-
-            if (!terms || terms.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:#9ca3af; padding: 20px;">${translations[currentLang].noResults}</p>`;
-                return;
-            }
-
-            terms.forEach(term => {
-                const category = currentLang === 'ar' ? term.category_ar : term.category_en;
-                const title = currentLang === 'ar' ? term.title_ar : term.title_en;
-                const desc = currentLang === 'ar' ? term.desc_ar : term.desc_en;
-
-                const card = document.createElement('div');
-                card.className = 'term-card';
-                card.innerHTML = `
-                    <div class="term-category">${category}</div>
-                    <div class="term-title">${title}</div>
-                    <p class="term-desc">${desc}</p>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function filterTerms() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            
-            if (!allTerms || allTerms.length === 0) return;
-
-            const filtered = allTerms.filter(term => {
-                // الفلترة بالقسم بالعربي أو الإنجليزي لضمان التوافق التام
-                const matchesCategory = selectedCategory === 'all' || 
-                    term.category_ar === selectedCategory || 
-                    term.category_en === selectedCategory;
-
-                const matchesQuery = 
-                    (term.title_ar && term.title_ar.toLowerCase().includes(query)) || 
-                    (term.title_en && term.title_en.toLowerCase().includes(query)) ||
-                    (term.desc_ar && term.desc_ar.toLowerCase().includes(query)) ||
-                    (term.desc_en && term.desc_en.toLowerCase().includes(query)) ||
-                    (term.category_ar && term.category_ar.toLowerCase().includes(query)) ||
-                    (term.category_en && term.category_en.toLowerCase().includes(query));
-
-                return matchesCategory && matchesQuery;
-            });
-
-            displayTerms(filtered);
-        }
-
-        function filterByCategory(category, btnElement) {
-            selectedCategory = category;
-            
-            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
-
-            filterTerms();
-        }
-
-        function clearSearch() {
-            document.getElementById('searchInput').value = '';
-            filterTerms();
-        }
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            const t = translations[currentLang];
-
-            document.getElementById('htmlRoot').setAttribute('lang', currentLang);
-            document.getElementById('htmlRoot').setAttribute('dir', t.dir);
-
-            document.getElementById('pageTitle').innerText = t.pageTitle;
-            document.getElementById('siteMainTitle').innerText = t.siteMainTitle;
-            document.getElementById('siteSubtitle').innerText = t.siteSubtitle;
-            document.getElementById('searchInput').setAttribute('placeholder', t.searchPlaceholder);
-            document.getElementById('langToggleBtn').innerText = t.langBtn;
-
-            // تحديث نصوص أزرار الأقسام تلقائياً بين العربي والإنجليزي
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.innerText = btn.getAttribute(`data-${currentLang}`);
-            });
-
-            filterTerms();
-        }
-
-        window.onload = fetchTerms;
-    </script>
-
-</body>
-</html>
+[
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "العميل",
+    "title_en": "Customer",
+    "desc_ar": "الشخص أو الكيان الذي يحصل على خدمة أو منتج مصرفي.",
+    "desc_en": "The person or entity that obtains a banking service or product."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "العميل المستفيد",
+    "title_en": "Beneficiary Customer",
+    "desc_ar": "الشخص الذي تعود إليه المنفعة الاقتصادية من المعاملة.",
+    "desc_en": "The person who receives the economic benefit from the transaction."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المفوض بالتوقيع",
+    "title_en": "Authorized Signatory",
+    "desc_ar": "الشخص المصرح له قانونًا بالتوقيع نيابة عن العميل أو الشركة.",
+    "desc_en": "The person legally authorized to sign on behalf of the customer or company."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التوكيل المصرفي",
+    "title_en": "Banking Power of Attorney",
+    "desc_ar": "تفويض شخص للقيام بعمليات مصرفية نيابة عن صاحب الحساب وفقًا لحدود التوكيل.",
+    "desc_en": "Authorizing a person to perform banking operations on behalf of the account holder within specified limits."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تجميد الحساب",
+    "title_en": "Account Freezing",
+    "desc_ar": "إيقاف بعض أو كل العمليات على الحساب وفقًا لسبب وإجراءات محددة.",
+    "desc_en": "Stopping some or all operations on an account according to specific reasons and procedures."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "غلق الحساب",
+    "title_en": "Account Closure",
+    "desc_ar": "إنهاء العلاقة الخاصة بالحساب وفقًا لإجراءات البنك.",
+    "desc_en": "Terminating the account relationship according to bank procedures."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحساب الخامل",
+    "title_en": "Dormant Account",
+    "desc_ar": "حساب لم تُجرَ عليه معاملات لفترة وفقًا للقواعد المطبقة.",
+    "desc_en": "An account that has had no transactions for a period according to applicable rules."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رقم الحساب",
+    "title_en": "Account Number",
+    "desc_ar": "رقم يميز حساب العميل داخل البنك.",
+    "desc_en": "A number that distinguishes the customer's account within the bank."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "IBAN",
+    "title_en": "IBAN",
+    "desc_ar": "رقم الحساب المصرفي الدولي المستخدم لتحديد الحساب في التحويلات.",
+    "desc_en": "International Bank Account Number used to identify the account in transfers."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "SWIFT",
+    "title_en": "SWIFT",
+    "desc_ar": "نظام دولي لتبادل رسائل وتعليمات المعاملات المالية بين المؤسسات المالية.",
+    "desc_en": "An international system for exchanging financial transaction messages and instructions between financial institutions."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التحويل البنكي",
+    "title_en": "Bank Transfer",
+    "desc_ar": "نقل أموال من حساب إلى حساب آخر.",
+    "desc_en": "Moving funds from one account to another."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التحويل المحلي",
+    "title_en": "Local Transfer",
+    "desc_ar": "تحويل أموال داخل الدولة.",
+    "desc_en": "Transferring funds within the country."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التحويل الدولي",
+    "title_en": "International Transfer",
+    "desc_ar": "تحويل أموال بين دول مختلفة.",
+    "desc_en": "Transferring funds between different countries."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المستفيد",
+    "title_en": "Beneficiary",
+    "desc_ar": "الشخص أو الجهة التي تستقبل الأموال.",
+    "desc_en": "The person or entity receiving the funds."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المرسل",
+    "title_en": "Sender",
+    "desc_ar": "الشخص أو الجهة التي تبدأ عملية التحويل.",
+    "desc_en": "The person or entity initiating the transfer process."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رقم المرجع",
+    "title_en": "Reference Number",
+    "desc_ar": "رقم يستخدم لتتبع العملية المصرفية.",
+    "desc_en": "A number used to track the banking transaction."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تاريخ القيمة",
+    "title_en": "Value Date",
+    "desc_ar": "التاريخ الذي تُحتسب منه الآثار المالية للعملية.",
+    "desc_en": "The date from which the financial effects of the transaction are calculated."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تاريخ القيد",
+    "title_en": "Posting Date",
+    "desc_ar": "التاريخ الذي تُسجل فيه العملية على الحساب.",
+    "desc_en": "The date the transaction is recorded on the account."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الرصيد المتاح",
+    "title_en": "Available Balance",
+    "desc_ar": "المبلغ الذي يمكن للعميل استخدامه فعليًا.",
+    "desc_en": "The amount the customer can actually use."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الرصيد الدفتري",
+    "title_en": "Book Balance",
+    "desc_ar": "الرصيد المسجل بالحساب قبل بعض التسويات أو العمليات المعلقة.",
+    "desc_en": "The balance recorded in the account prior to certain adjustments or pending transactions."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المعاملة المعلقة",
+    "title_en": "Pending Transaction",
+    "desc_ar": "عملية لم تكتمل تسويتها بعد.",
+    "desc_en": "A transaction whose settlement is not yet complete."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التسوية",
+    "title_en": "Settlement",
+    "desc_ar": "إتمام نقل الأموال أو الحقوق بين أطراف المعاملة.",
+    "desc_en": "Completing the transfer of funds or rights between transaction parties."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المقاصة",
+    "title_en": "Clearing",
+    "desc_ar": "عملية تسوية الالتزامات المتبادلة بين المؤسسات المالية.",
+    "desc_en": "The process of settling mutual obligations between financial institutions."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الخصم المباشر",
+    "title_en": "Direct Debit",
+    "desc_ar": "تفويض جهة بسحب مبالغ مستحقة من حساب العميل.",
+    "desc_en": "An authorization to an entity to withdraw due amounts from the customer's account."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "أمر الدفع",
+    "title_en": "Payment Order",
+    "desc_ar": "تعليمات يوجهها العميل للبنك لتنفيذ دفعة.",
+    "desc_en": "Instructions given by the customer to the bank to execute a payment."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الشيك",
+    "title_en": "Cheque",
+    "desc_ar": "أداة دفع مكتوبة تتضمن أمرًا بسداد مبلغ محدد.",
+    "desc_en": "A written payment instrument containing an order to pay a specific amount."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الساحب",
+    "title_en": "Drawer",
+    "desc_ar": "الشخص الذي يصدر الشيك.",
+    "desc_en": "The person who issues the cheque."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المسحوب عليه",
+    "title_en": "Drawee",
+    "desc_ar": "البنك المطلوب منه دفع قيمة الشيك.",
+    "desc_en": "The bank requested to pay the value of the cheque."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المستفيد من الشيك",
+    "title_en": "Cheque Beneficiary",
+    "desc_ar": "الشخص أو الجهة التي تستحق قيمة الشيك.",
+    "desc_en": "The person or entity entitled to the value of the cheque."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الشيك المرتجع",
+    "title_en": "Bounced Cheque",
+    "desc_ar": "شيك لم يتم صرفه لسبب من أسباب الرفض.",
+    "desc_en": "A cheque that was not cashed due to a reason for refusal."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "بطاقة الخصم المباشر",
+    "title_en": "Debit Card",
+    "desc_ar": "بطاقة مرتبطة بحساب العميل ويتم الخصم من رصيده عند الاستخدام.",
+    "desc_en": "A card linked to the customer's account where amounts are deducted from the balance upon use."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "بطاقة الائتمان",
+    "title_en": "Credit Card",
+    "desc_ar": "بطاقة تتيح للعميل استخدام حد ائتماني يحدده البنك.",
+    "desc_en": "A card that allows the customer to use a credit limit set by the bank."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحد الائتماني",
+    "title_en": "Credit Limit",
+    "desc_ar": "أقصى مبلغ يمكن استخدامه من التسهيل أو البطاقة.",
+    "desc_en": "The maximum amount that can be used from the facility or card."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحد المتاح",
+    "title_en": "Available Limit",
+    "desc_ar": "الجزء غير المستخدم من الحد الائتماني.",
+    "desc_en": "The unused portion of the credit limit."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحد الأدنى للسداد",
+    "title_en": "Minimum Payment",
+    "desc_ar": "أقل مبلغ مطلوب سداده من مديونية البطاقة خلال فترة محددة.",
+    "desc_en": "The least amount required to be paid from the card debt during a specific period."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "فترة السماح",
+    "title_en": "Grace Period",
+    "desc_ar": "مدة قد يتيح خلالها البنك سداد بعض المديونية دون احتساب تكلفة معينة، وفقًا للشروط.",
+    "desc_en": "A duration during which the bank may allow paying off debt without incurring a specific cost, according to terms."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الرقم السري PIN",
+    "title_en": "PIN",
+    "desc_ar": "رمز يستخدم للتحقق من هوية مستخدم البطاقة.",
+    "desc_en": "A code used to verify the identity of the card user."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رمز CVV",
+    "title_en": "CVV",
+    "desc_ar": "رمز أمان يستخدم للتحقق من بعض معاملات البطاقات.",
+    "desc_en": "A security code used to verify certain card transactions."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الصراف الآلي ATM",
+    "title_en": "ATM",
+    "desc_ar": "جهاز يتيح تنفيذ خدمات مصرفية مثل السحب والإيداع.",
+    "desc_en": "A device that allows performing banking services such as withdrawal and deposit."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "نقطة البيع POS",
+    "title_en": "POS",
+    "desc_ar": "جهاز يستخدم لقبول المدفوعات بالبطاقات.",
+    "desc_en": "A device used to accept card payments."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "المحفظة الإلكترونية",
+    "title_en": "Digital Wallet",
+    "desc_ar": "وسيلة إلكترونية لحفظ الأموال وإجراء المدفوعات والتحويلات وفقًا للقواعد.",
+    "desc_en": "An electronic medium to store funds and make payments and transfers according to rules."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "الخدمات المصرفية الإلكترونية",
+    "title_en": "Electronic Banking",
+    "desc_ar": "تنفيذ الخدمات المصرفية عبر الوسائل الإلكترونية.",
+    "desc_en": "Executing banking services via electronic means."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "الخدمات المصرفية عبر الإنترنت",
+    "title_en": "Internet Banking",
+    "desc_ar": "إدارة الحسابات والخدمات من خلال المنصات الإلكترونية للبنك.",
+    "desc_en": "Managing accounts and services through the bank's online platforms."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "الخدمات المصرفية عبر الهاتف المحمول",
+    "title_en": "Mobile Banking",
+    "desc_ar": "تنفيذ الخدمات المصرفية باستخدام تطبيق البنك.",
+    "desc_en": "Executing banking services using the bank's application."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "التحقق الثنائي",
+    "title_en": "Two-Factor Authentication",
+    "desc_ar": "استخدام وسيلتين للتحقق من هوية المستخدم.",
+    "desc_en": "Using two methods to verify user identity."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "الهوية الرقمية",
+    "title_en": "Digital Identity",
+    "desc_ar": "بيانات إلكترونية تستخدم للتحقق من هوية العميل.",
+    "desc_en": "Electronic data used to verify customer identity."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الاحتيال المصرفي",
+    "title_en": "Banking Fraud",
+    "desc_ar": "استخدام أساليب غير مشروعة للاستيلاء على الأموال أو البيانات المصرفية.",
+    "desc_en": "Using illegal methods to seize funds or banking data."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "غسل الأموال",
+    "title_en": "Money Laundering",
+    "desc_ar": "إخفاء أو تمويه مصدر الأموال غير المشروعة وإظهارها كأنها أموال مشروعة.",
+    "desc_en": "Hiding or disguising the source of illegal funds and making them appear legitimate."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "تمويل الإرهاب",
+    "title_en": "Terrorism Financing",
+    "desc_ar": "توفير أو جمع أموال لاستخدامها في أنشطة إرهابية.",
+    "desc_en": "Providing or collecting funds to be used in terrorist activities."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "العناية الواجبة",
+    "title_en": "Due Diligence",
+    "desc_ar": "إجراءات يقوم بها البنك لفهم العميل ومخاطر معاملاته.",
+    "desc_en": "Procedures undertaken by the bank to understand the customer and transaction risks."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "مخاطر الائتمان",
+    "title_en": "Credit Risk",
+    "desc_ar": "احتمال عدم قدرة العميل على الوفاء بالتزاماته.",
+    "desc_en": "The probability that the customer will fail to meet their obligations."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "مخاطر السوق",
+    "title_en": "Market Risk",
+    "desc_ar": "احتمال الخسارة نتيجة تغيرات أسعار السوق.",
+    "desc_en": "The probability of loss resulting from changes in market prices."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "مخاطر السيولة",
+    "title_en": "Liquidity Risk",
+    "desc_ar": "خطر عدم قدرة المؤسسة على الوفاء بالتزاماتها عند استحقاقها.",
+    "desc_en": "The risk that the institution cannot meet its obligations when they fall due."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المخاطر التشغيلية",
+    "title_en": "Operational Risk",
+    "desc_ar": "خسائر ناتجة عن أخطاء أو قصور في الأنظمة أو العمليات أو العاملين.",
+    "desc_en": "Losses resulting from errors or deficiencies in systems, processes, or personnel."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المخاطر القانونية",
+    "title_en": "Legal Risk",
+    "desc_ar": "مخاطر ناتجة عن القوانين أو العقود أو النزاعات القانونية.",
+    "desc_en": "Risks arising from laws, contracts, or legal disputes."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الملاءة المالية",
+    "title_en": "Solvency",
+    "desc_ar": "قدرة المؤسسة على الوفاء بالتزاماتها المالية.",
+    "desc_en": "The institution's ability to meet its financial obligations."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "كفاية رأس المال",
+    "title_en": "Capital Adequacy",
+    "desc_ar": "مدى قدرة رأس المال على تغطية المخاطر التي تتعرض لها المؤسسة.",
+    "desc_en": "The capacity of capital to cover risks faced by the institution."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رأس المال",
+    "title_en": "Capital",
+    "desc_ar": "الأموال التي تشكل قاعدة مالية للمؤسسة وتدعم قدرتها على تحمل الخسائر.",
+    "desc_en": "Funds that form the financial base of the institution and support its ability to absorb losses."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الأصول",
+    "title_en": "Assets",
+    "desc_ar": "الموارد والممتلكات والحقوق الاقتصادية التي تملكها المؤسسة.",
+    "desc_en": "Resources, properties, and economic rights owned by the institution."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الخصوم",
+    "title_en": "Liabilities",
+    "desc_ar": "الالتزامات المالية المستحقة على المؤسسة.",
+    "desc_en": "Financial obligations owed by the institution."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "حقوق الملكية",
+    "title_en": "Equity",
+    "desc_ar": "حقوق المساهمين في أصول المؤسسة بعد خصم الالتزامات.",
+    "desc_en": "Shareholders' rights in the institution's assets after deducting liabilities."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المخصص",
+    "title_en": "Provision",
+    "desc_ar": "مبلغ يُجنب لمواجهة خسائر أو التزامات محتملة.",
+    "desc_en": "An amount set aside to face potential losses or obligations."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القروض المتعثرة",
+    "title_en": "Non-Performing Loans",
+    "desc_ar": "قروض لم يعد سدادها يتم وفق الشروط والمواعيد المتفق عليها.",
+    "desc_en": "Loans that are no longer being repaid according to agreed terms and schedules."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "نسبة التعثر",
+    "title_en": "NPL Ratio",
+    "desc_ar": "مؤشر يعبر عن حجم القروض المتعثرة مقارنة بإجمالي محفظة القروض.",
+    "desc_en": "An indicator expressing the volume of non-performing loans compared to the total loan portfolio."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "مخصصات القروض",
+    "title_en": "Loan Provisions",
+    "desc_ar": "مبالغ يجنبها البنك لمواجهة مخاطر عدم السداد.",
+    "desc_en": "Amounts set aside by the bank to face non-repayment risks."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "ضمان القرض",
+    "title_en": "Loan Collateral",
+    "desc_ar": "أصل أو تعهد يستخدم لتأمين التمويل.",
+    "desc_en": "An asset or undertaking used to secure financing."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القرض المضمون",
+    "title_en": "Secured Loan",
+    "desc_ar": "قرض يكون له ضمان محدد وفقًا للعقد.",
+    "desc_en": "A loan that has specific collateral according to the contract."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القرض غير المضمون",
+    "title_en": "Unsecured Loan",
+    "desc_ar": "تمويل لا يعتمد على أصل محدد كضمان.",
+    "desc_en": "Financing that does not rely on a specific asset as collateral."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القسط",
+    "title_en": "Installment",
+    "desc_ar": "المبلغ الذي يسدده العميل دوريًا لسداد التمويل.",
+    "desc_en": "The amount paid periodically by the customer to repay financing."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "فترة السداد",
+    "title_en": "Repayment Period",
+    "desc_ar": "المدة المحددة لسداد التمويل.",
+    "desc_en": "The specified duration for repaying financing."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "فترة التمويل",
+    "title_en": "Financing Tenure",
+    "desc_ar": "المدة التي يمتد خلالها التسهيل أو القرض.",
+    "desc_en": "The duration over which the facility or loan extends."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "تكلفة التمويل",
+    "title_en": "Financing Cost",
+    "desc_ar": "إجمالي التكلفة المرتبطة بالحصول على التمويل وفق شروطه.",
+    "desc_en": "The total cost associated with obtaining financing according to its terms."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "هامش الربح",
+    "title_en": "Profit Margin",
+    "desc_ar": "النسبة التي يضيفها البنك إلى سعر مرجعي في بعض المنتجات.",
+    "desc_en": "The percentage added by the bank to a reference rate in certain products."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "السعر المرجعي",
+    "title_en": "Reference Rate",
+    "desc_ar": "سعر أو مؤشر يستخدم كأساس لتحديد سعر فائدة أو عائد.",
+    "desc_en": "A price or index used as a basis to determine interest or yield."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "الكوريدور",
+    "title_en": "Corridor",
+    "desc_ar": "نطاق أسعار الفائدة الذي يحدده البنك المركزي لبعض عملياته.",
+    "desc_en": "The interest rate band set by the central bank for certain operations."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "سعر العملية الرئيسية",
+    "title_en": "Main Operation Rate",
+    "desc_ar": "سعر الفائدة المرتبط بعمليات السياسة النقدية الرئيسية للبنك المركزي.",
+    "desc_en": "The interest rate linked to the central bank's main monetary policy operations."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "سعر إعادة الخصم",
+    "title_en": "Rediscount Rate",
+    "desc_ar": "سعر يستخدم في بعض عمليات البنك المركزي المتعلقة بالأوراق التجارية والائتمان وفق الإطار المعمول به.",
+    "desc_en": "A rate used in certain central bank operations regarding commercial paper and credit."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "السياسة النقدية",
+    "title_en": "Monetary Policy",
+    "desc_ar": "الإجراءات التي يستخدمها البنك المركزي للتأثير في النقد والائتمان وأسعار الفائدة.",
+    "desc_en": "Actions used by the central bank to influence money, credit, and interest rates."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "التضخم",
+    "title_en": "Inflation",
+    "desc_ar": "ارتفاع عام ومستمر في المستوى العام للأسعار.",
+    "desc_en": "A general and continuous increase in the general price level."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "سعر الصرف",
+    "title_en": "Exchange Rate",
+    "desc_ar": "قيمة عملة مقابل عملة أخرى.",
+    "desc_en": "The value of one currency against another."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "سعر الشراء",
+    "title_en": "Buying Rate",
+    "desc_ar": "السعر الذي يشتري به البنك العملة الأجنبية من العميل.",
+    "desc_en": "The rate at which the bank buys foreign currency from the customer."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "سعر البيع",
+    "title_en": "Selling Rate",
+    "desc_ar": "السعر الذي يبيع به البنك العملة الأجنبية للعميل.",
+    "desc_en": "The rate at which the bank sells foreign currency to the customer."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "فرق سعر الصرف",
+    "title_en": "Exchange Spread",
+    "desc_ar": "الفارق بين سعر شراء العملة وسعر بيعها.",
+    "desc_en": "The difference between the currency buying and selling rates."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "سوق الصرف الأجنبي",
+    "title_en": "Foreign Exchange Market",
+    "desc_ar": "السوق الذي يتم فيه تداول العملات الأجنبية.",
+    "desc_en": "The market where foreign currencies are traded."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "الاحتياطي النقدي الدولي",
+    "title_en": "International Reserves",
+    "desc_ar": "أصول أجنبية يحتفظ بها البنك المركزي لدعم الاستقرار المالي والنقدي.",
+    "desc_en": "Foreign assets held by the central bank to support financial and monetary stability."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "أذون الخزانة",
+    "title_en": "Treasury Bills",
+    "desc_ar": "أدوات دين حكومية قصيرة الأجل تصدرها وزارة المالية.",
+    "desc_en": "Short-term government debt instruments issued by the Ministry of Finance."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "السندات الحكومية",
+    "title_en": "Government Bonds",
+    "desc_ar": "أدوات دين تصدرها الحكومة لآجال مختلفة.",
+    "desc_en": "Debt instruments issued by the government for various maturities."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العطاء",
+    "title_en": "Tender / Auction",
+    "desc_ar": "عملية تقدم من خلالها البنوك أو المستثمرون عروضهم لشراء أداة مالية وفق شروط الطرح.",
+    "desc_en": "A process through which banks or investors submit bids to purchase a financial instrument."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "سعر الخصم في أذون الخزانة",
+    "title_en": "T-Bills Discount Rate",
+    "desc_ar": "النسبة المستخدمة للوصول إلى سعر شراء أقل من القيمة الاسمية للأذن.",
+    "desc_en": "The rate used to arrive at a purchase price below the nominal value of the bill."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "القيمة الحالية",
+    "title_en": "Present Value",
+    "desc_ar": "قيمة مبلغ مستقبلي محسوبة وفق معدل خصم معين.",
+    "desc_en": "The value of a future amount calculated according to a specific discount rate."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد حتى الاستحقاق",
+    "title_en": "Yield to Maturity",
+    "desc_ar": "معدل العائد الذي يعكس العائد السنوي المتوقع عند الاحتفاظ بالأداة حتى تاريخ استحقاقها.",
+    "desc_en": "The rate of return reflecting the expected annual return when holding the instrument until maturity."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "الاستحقاق",
+    "title_en": "Maturity",
+    "desc_ar": "الموعد الذي تستحق فيه قيمة الأداة أو الالتزام.",
+    "desc_en": "The date when the value of the instrument or obligation becomes due."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "السوق الأولي",
+    "title_en": "Primary Market",
+    "desc_ar": "السوق الذي يتم فيه إصدار الأداة المالية وطرحها للمستثمرين لأول مرة.",
+    "desc_en": "The market where financial instruments are issued and offered to investors for the first time."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "السوق الثانوي",
+    "title_en": "Secondary Market",
+    "desc_ar": "السوق الذي يتم فيه تداول الأداة بعد إصدارها.",
+    "desc_en": "The market where instruments are traded after issuance."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "الحفظ المركزي",
+    "title_en": "Central Depository",
+    "desc_ar": "تسجيل وحفظ الأوراق المالية إلكترونيًا وتسوية ملكيتها.",
+    "desc_en": "Electronically recording and safekeeping securities and settling their ownership."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "التداول",
+    "title_en": "Trading",
+    "desc_ar": "شراء وبيع الأدوات المالية.",
+    "desc_en": "Buying and selling financial instruments."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "السيولة المصرفية",
+    "title_en": "Banking Liquidity",
+    "desc_ar": "قدرة البنك على توفير النقد والوفاء بالتزاماته في مواعيدها.",
+    "desc_en": "The bank's ability to provide cash and meet obligations on time."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "الاحتياطي الإلزامي",
+    "title_en": "Required Reserve",
+    "desc_ar": "نسبة من ودائع البنوك تلتزم البنوك بالاحتفاظ بها وفق قواعد البنك المركزي.",
+    "desc_en": "A percentage of bank deposits that banks are required to hold according to central bank rules."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "صافي الدخل",
+    "title_en": "Net Income",
+    "desc_ar": "الفرق بين الإيرادات والمصروفات خلال فترة محددة.",
+    "desc_en": "The difference between revenues and expenses over a specific period."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الربحية",
+    "title_en": "Profitability",
+    "desc_ar": "قدرة المؤسسة على تحقيق أرباح من نشاطها خلال فترة زمنية معينة.",
+    "desc_en": "The institution's ability to generate profits from its activity over a specific time period."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحساب الجاري",
+    "title_en": "Current Account",
+    "desc_ar": "حساب يُستخدم في المعاملات اليومية مثل الإيداع والسحب والتحويل وسداد المدفوعات.",
+    "desc_en": "An account used for daily transactions such as deposits, withdrawals, transfers, and payments."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "حساب التوفير",
+    "title_en": "Savings Account",
+    "desc_ar": "حساب مصرفي يتيح للعميل الاحتفاظ بأمواله مع إمكانية الحصول على عائد.",
+    "desc_en": "A bank account allowing the customer to keep funds with the possibility of earning a return."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الوديعة لأجل",
+    "title_en": "Time Deposit",
+    "desc_ar": "مبلغ يودعه العميل لدى البنك لمدة محددة مقابل عائد.",
+    "desc_en": "An amount deposited by the customer with the bank for a specified period against a return."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "الشهادة الادخارية",
+    "title_en": "Savings Certificate",
+    "desc_ar": "أداة ادخارية يصدرها البنك لمدة محددة، مقابل عائد ثابت أو متغير.",
+    "desc_en": "A saving instrument issued by the bank for a specific period against fixed or variable returns."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "كسر الشهادة",
+    "title_en": "Certificate Breakdown",
+    "desc_ar": "استرداد قيمة الشهادة قبل انتهاء مدتها، وفقًا للقواعد والشروط.",
+    "desc_en": "Redeeming the value of the certificate before its maturity according to rules and conditions."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "تجديد الشهادة",
+    "title_en": "Certificate Renewal",
+    "desc_ar": "استمرار الاستثمار عند تاريخ الاستحقاق لفترة جديدة وفقًا للشروط والعائد المعلن.",
+    "desc_en": "Continuing the investment at maturity for a new period according to declared terms and returns."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "أصل المبلغ",
+    "title_en": "Principal Amount",
+    "desc_ar": "المبلغ الأساسي الذي أودعه أو استثمره العميل قبل إضافة العوائد أو خصم المصروفات.",
+    "desc_en": "The base amount deposited or invested by the customer before adding returns or deducting expenses."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "العائد الفعلي",
+    "title_en": "Effective Return",
+    "desc_ar": "العائد الذي يحصل عليه العميل فعليًا بعد مراعاة طريقة الاحتساب والتوقيت والتكاليف.",
+    "desc_en": "The return actually received by the customer after considering calculation methods and timing."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "سعر الفائدة",
+    "title_en": "Interest Rate",
+    "desc_ar": "النسبة التي تحدد تكلفة الاقتراض أو العائد على الأموال المودعة أو المستثمرة.",
+    "desc_en": "The percentage determining borrowing costs or returns on deposited or invested funds."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "سعر الخصم",
+    "title_en": "Discount Rate",
+    "desc_ar": "نسبة تستخدم لاحتساب قيمة الأداة المالية عند بيعها بأقل من قيمتها الاسمية.",
+    "desc_en": "A rate used to calculate the value of a financial instrument when sold below face value."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "القيمة الاسمية",
+    "title_en": "Nominal Value",
+    "desc_ar": "القيمة التي تُحدد للأداة المالية عند إصدارها.",
+    "desc_en": "The value assigned to a financial instrument when issued."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تاريخ الاستحقاق",
+    "title_en": "Maturity Date",
+    "desc_ar": "التاريخ الذي ينتهي فيه أجل الأداة المالية أو الوديعة أو الشهادة.",
+    "desc_en": "The date when the term of the financial instrument, deposit, or certificate ends."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تاريخ الإصدار",
+    "title_en": "Issue Date",
+    "desc_ar": "التاريخ الذي تبدأ فيه الأداة المالية أو الشهادة أو الوديعة رسميًا.",
+    "desc_en": "The date the financial instrument, certificate, or deposit officially begins."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "السيولة",
+    "title_en": "Liquidity",
+    "desc_ar": "مدى سهولة تحويل الأصل أو الاستثمار إلى نقد دون تحمل خسارة كبيرة.",
+    "desc_en": "The ease with which an asset or investment can be converted into cash without major loss."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الجدارة الائتمانية",
+    "title_en": "Creditworthiness",
+    "desc_ar": "تقييم قدرة العميل أو الشركة على الوفاء بالتزاماتها المالية وسداد الديون.",
+    "desc_en": "An evaluation of a customer's or company's ability to meet financial obligations."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الضمان",
+    "title_en": "Collateral",
+    "desc_ar": "أصل أو حق يقدمه العميل للبنك لتأمين الالتزام المالي.",
+    "desc_en": "An asset or right provided by the customer to the bank to secure a financial obligation."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القرض",
+    "title_en": "Loan",
+    "desc_ar": "مبلغ يقدمه البنك للعميل لفترة محددة على أن يتم سداده وفق جدول وشروط.",
+    "desc_en": "An amount provided by the bank to a customer for a specified period to be repaid."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "التسهيلات الائتمانية",
+    "title_en": "Credit Facilities",
+    "desc_ar": "مجموعة المنتجات أو الحدود الائتمانية التي يتيحها البنك للعميل.",
+    "desc_en": "A set of products or credit limits made available by the bank to the customer."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "السحب على المكشوف",
+    "title_en": "Overdraft",
+    "desc_ar": "تسهيل يسمح للعميل بالسحب متجاوزًا الرصيد المتاح حتى حد ائتماني.",
+    "desc_en": "A facility allowing the customer to withdraw beyond available balance up to a limit."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "التعثر الائتماني",
+    "title_en": "Credit Default",
+    "desc_ar": "عدم قدرة العميل على الوفاء بالتزاماته المالية وفق المواعيد والشروط المحددة.",
+    "desc_en": "The failure of a customer to fulfill financial obligations according to specified terms."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الشخصية الاعتبارية",
+    "title_en": "Legal Entity",
+    "desc_ar": "كيان قانوني مستقل مثل الشركات والمؤسسات له حقوق والتزامات.",
+    "desc_en": "An independent legal entity such as companies and institutions having rights and obligations."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الشخص الطبيعي",
+    "title_en": "Natural Person",
+    "desc_ar": "الفرد الذي يتعامل مع البنك باسمه الشخصي.",
+    "desc_en": "An individual dealing with the bank under their personal name."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "كود العميل / كود الشركة",
+    "title_en": "Customer / Company Code",
+    "desc_ar": "رقم أو رمز تعريفي تستخدمه المؤسسة المالية لتمييز العميل أو الشركة.",
+    "desc_en": "An identification number or code used by the financial institution to distinguish a customer."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "اعرف عميلك (KYC)",
+    "title_en": "Know Your Customer (KYC)",
+    "desc_ar": "إجراءات يقوم بها البنك للتحقق من هوية العميل وطبيعة نشاطه ومصدر أمواله.",
+    "desc_en": "Procedures undertaken by the bank to verify customer identity and fund sources."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "سعر الكوريدور",
+    "title_en": "Corridor Rate",
+    "desc_ar": "نطاق أسعار الفائدة الذي يحدده البنك المركزي لعمليات الإيداع والإقراض.",
+    "desc_en": "The interest rate band set by the central bank for deposit and lending operations."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "سعر الإيداع",
+    "title_en": "Deposit Rate",
+    "desc_ar": "سعر الفائدة الذي يحصل عليه البنك عند إيداع أمواله لدى البنك المركزي.",
+    "desc_en": "The interest rate received by a bank when depositing funds with the central bank."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "سعر الإقراض",
+    "title_en": "Lending Rate",
+    "desc_ar": "سعر الفائدة الذي يدفعه البنك عند اقتراضه من البنك المركزي.",
+    "desc_en": "The interest rate paid when banks borrow from the central bank."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد الثابت",
+    "title_en": "Fixed Return",
+    "desc_ar": "عائد يتم تحديده مسبقًا عند شراء الشهادة ولا يتغير طوال المدة.",
+    "desc_en": "A return predetermined upon purchasing a certificate and unchanging throughout the term."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد المتغير",
+    "title_en": "Variable Return",
+    "desc_ar": "عائد يرتبط بمؤشر أو سعر مرجعي ويمكن أن يرتفع أو ينخفض.",
+    "desc_en": "A return linked to an index or reference rate that can rise or fall."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد المتناقص",
+    "title_en": "Declining Return",
+    "desc_ar": "عائد تكون نسبته أعلى في بداية المدة ثم تنخفض وفق جدول محدد.",
+    "desc_en": "A return rate that is higher at the start of the term and then decreases per schedule."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "الحد الأدنى للشراء",
+    "title_en": "Minimum Purchase Limit",
+    "desc_ar": "أقل مبلغ يسمح البنك للعميل باستثماره في الشهادة أو الأداة المالية.",
+    "desc_en": "The minimum amount the bank allows a customer to invest in a certificate or instrument."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "دورية صرف العائد",
+    "title_en": "Return Payout Frequency",
+    "desc_ar": "الفترة التي يتم على أساسها صرف العائد للعميل (شهري، ربع سنوي، سنوي).",
+    "desc_en": "The period based on which returns are paid to the customer (monthly, quarterly, annually)."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحساب المصرفي",
+    "title_en": "Bank Account",
+    "desc_ar": "وسيلة يحتفظ من خلالها العميل بأمواله ويجري معاملاته البنكية.",
+    "desc_en": "A medium through which a customer keeps funds and conducts banking transactions."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحساب المشترك",
+    "title_en": "Joint Account",
+    "desc_ar": "حساب مملوك لأكثر من شخص وفق شروط محددة.",
+    "desc_en": "An account owned by more than one person according to specific terms."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحساب الجاري المدين",
+    "title_en": "Overdrawn / Debit Current Account",
+    "desc_ar": "حساب يسمح باستخدام تسهيل ائتماني وفق حد متفق عليه.",
+    "desc_en": "An account allowing the use of credit facilities up to an agreed limit."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحساب الجاري الدائن",
+    "title_en": "Credit Current Account",
+    "desc_ar": "حساب يكون رصيده لصالح العميل.",
+    "desc_en": "An account whose balance is in favor of the customer."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "حساب الشركات",
+    "title_en": "Corporate Account",
+    "desc_ar": "حساب مخصص للكيانات الاعتبارية لإدارة معاملاتها المالية.",
+    "desc_en": "An account dedicated to legal entities to manage financial transactions."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "حساب القاصر",
+    "title_en": "Minor Account",
+    "desc_ar": "حساب يفتح لصالح شخص لم يبلغ السن القانونية وفق القواعد المنظمة.",
+    "desc_en": "An account opened for a person who has not reached the legal age according to regulations."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "حساب المرتبات",
+    "title_en": "Payroll Account",
+    "desc_ar": "حساب يُستخدم لتحويل وصرف رواتب العاملين.",
+    "desc_en": "An account used for transferring and disbursing employee salaries."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "حساب التوفير بعائد",
+    "title_en": "Interest-Bearing Savings Account",
+    "desc_ar": "حساب يحصل صاحبه على عائد وفق شروط البنك.",
+    "desc_en": "An account where the holder earns a return according to bank terms."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحساب الوسيط",
+    "title_en": "Intermediary / Escrow Account",
+    "desc_ar": "حساب يستخدم لتجميع أو تمرير مبالغ مرتبطة بمعاملة معينة.",
+    "desc_en": "An account used to collect or pass through funds related to a specific transaction."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحساب الرئيسي",
+    "title_en": "Master Account",
+    "desc_ar": "الحساب الأساسي الذي ترتبط به بعض الخدمات أو المنتجات.",
+    "desc_en": "The primary account to which certain services or products are linked."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "كشف الحساب",
+    "title_en": "Account Statement",
+    "desc_ar": "بيان يوضح الحركات والرصيد خلال فترة محددة.",
+    "desc_en": "A statement showing movements and balance over a specified period."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "كشف الحساب الإلكتروني",
+    "title_en": "Electronic Account Statement",
+    "desc_ar": "كشف يتم توفيره للعميل عبر القنوات الإلكترونية.",
+    "desc_en": "A statement provided to the customer via electronic channels."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الرصيد الافتتاحي",
+    "title_en": "Opening Balance",
+    "desc_ar": "الرصيد الموجود في بداية الفترة.",
+    "desc_en": "The balance at the beginning of the period."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الرصيد الختامي",
+    "title_en": "Closing Balance",
+    "desc_ar": "الرصيد الموجود في نهاية الفترة.",
+    "desc_en": "The balance at the end of the period."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحركة المدينة",
+    "title_en": "Debit Movement",
+    "desc_ar": "عملية تؤدي إلى انخفاض الرصيد.",
+    "desc_en": "A transaction that leads to a decrease in the balance."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحركة الدائنة",
+    "title_en": "Credit Movement",
+    "desc_ar": "عملية تؤدي إلى زيادة الرصيد.",
+    "desc_en": "A transaction that leads to an increase in the balance."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "القيد المحاسبي",
+    "title_en": "Accounting Entry",
+    "desc_ar": "تسجيل مالي رسمي للعملية داخل النظام المحاسبي.",
+    "desc_en": "An official financial recording of a transaction within the accounting system."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "القيد العكسي",
+    "title_en": "Reversing Entry",
+    "desc_ar": "قيد يستخدم لإلغاء أو تصحيح قيد سابق.",
+    "desc_en": "An entry used to cancel or correct a previous entry."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تسوية الحساب",
+    "title_en": "Account Reconciliation",
+    "desc_ar": "معالجة العمليات لضمان تطابق السجلات والأرصدة.",
+    "desc_en": "Processing transactions to ensure records and balances match."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "مطابقة الحساب",
+    "title_en": "Account Matching",
+    "desc_ar": "مقارنة بيانات الحساب مع السجلات أو المستندات ذات الصلة.",
+    "desc_en": "Comparing account data with relevant records or documents."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "وديعة تحت الطلب",
+    "title_en": "Call Deposit",
+    "desc_ar": "أموال يمكن سحبها وفق شروط الحساب دون انتظار تاريخ استحقاق محدد.",
+    "desc_en": "Funds that can be withdrawn per account terms without waiting for a fixed maturity date."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "وديعة لأجل ثابت",
+    "title_en": "Fixed-Term Deposit",
+    "desc_ar": "وديعة مرتبطة بمدة محددة.",
+    "desc_en": "A deposit tied to a specific duration."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "وديعة متجددة",
+    "title_en": "Renewable Deposit",
+    "desc_ar": "وديعة يتم تجديدها عند الاستحقاق وفق الشروط المتفق عليها.",
+    "desc_en": "A deposit that is renewed at maturity according to agreed terms."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "الوديعة القابلة للكسر",
+    "title_en": "Breakable Deposit",
+    "desc_ar": "وديعة يمكن استردادها قبل الاستحقاق وفق شروط محددة.",
+    "desc_en": "A deposit that can be redeemed before maturity according to specific terms."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "شهادة ذات عائد مقدم",
+    "title_en": "Upfront Return Certificate",
+    "desc_ar": "شهادة يتم صرف عائدها وفق آلية محددة عند البداية أو مقدمًا.",
+    "desc_en": "A certificate whose return is disbursed per a specific mechanism at the start or in advance."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "شهادة ذات عائد تراكمي",
+    "title_en": "Cumulative Return Certificate",
+    "desc_ar": "عائدها يضاف إلى قيمة الاستثمار وفق شروط المنتج.",
+    "desc_en": "A certificate whose return is added to the investment value per product terms."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "شهادة اسمية",
+    "title_en": "Registered Certificate",
+    "desc_ar": "شهادة تصدر باسم مالك محدد.",
+    "desc_en": "A certificate issued in the name of a specific owner."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "شهادة قابلة للاسترداد",
+    "title_en": "Redeemable Certificate",
+    "desc_ar": "شهادة يمكن استردادها قبل تاريخ الاستحقاق وفق الشروط.",
+    "desc_en": "A certificate that can be redeemed before maturity according to conditions."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "شهادة متغيرة العائد",
+    "title_en": "Variable-Return Certificate",
+    "desc_ar": "شهادة يتغير عائدها وفق مؤشر أو سعر مرجعي.",
+    "desc_en": "A certificate whose return changes according to an index or reference rate."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "دورية العائد",
+    "title_en": "Return Payout Schedule",
+    "desc_ar": "توقيت صرف العائد للعميل.",
+    "desc_en": "The timing of return payouts to the customer."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد الشهري",
+    "title_en": "Monthly Return",
+    "desc_ar": "عائد يصرف كل شهر.",
+    "desc_en": "A return paid every month."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد الربع سنوي",
+    "title_en": "Quarterly Return",
+    "desc_ar": "عائد يصرف كل ثلاثة أشهر.",
+    "desc_en": "A return paid every three months."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد نصف السنوي",
+    "title_en": "Semi-Annual Return",
+    "desc_ar": "عائد يصرف كل ستة أشهر.",
+    "desc_en": "A return paid every six months."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد السنوي",
+    "title_en": "Annual Return",
+    "desc_ar": "عائد يصرف مرة كل سنة.",
+    "desc_en": "A return paid once a year."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد التراكمي",
+    "title_en": "Cumulative Return",
+    "desc_ar": "عائد يتراكم خلال فترة الاستثمار وفق شروط المنتج.",
+    "desc_en": "A return that accumulates during the investment period according to product terms."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد الاسمي",
+    "title_en": "Nominal Return",
+    "desc_ar": "النسبة المعلنة للعائد قبل بعض الاعتبارات المتعلقة بطريقة الحساب.",
+    "desc_en": "The announced return percentage prior to calculation method considerations."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد الحقيقي",
+    "title_en": "Real Return",
+    "desc_ar": "العائد بعد مراعاة أثر التضخم.",
+    "desc_en": "The return after accounting for the impact of inflation."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "إعادة استثمار العائد",
+    "title_en": "Return Reinvestment",
+    "desc_ar": "استخدام العائد المحقق لاستثمار جديد.",
+    "desc_en": "Using the realized return for a new investment."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "الاسترداد المبكر",
+    "title_en": "Early Redemption",
+    "desc_ar": "استعادة قيمة الاستثمار قبل تاريخ الاستحقاق.",
+    "desc_en": "Recovering the value of the investment before the maturity date."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "غرامة الاسترداد",
+    "title_en": "Redemption Penalty",
+    "desc_ar": "تكلفة أو خصم قد يطبق عند الاسترداد المبكر وفق الشروط.",
+    "desc_en": "A cost or deduction that may apply upon early redemption according to terms."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "التمويل الشخصي",
+    "title_en": "Personal Financing",
+    "desc_ar": "تمويل يمنح للأفراد لأغراض شخصية وفق شروط البنك.",
+    "desc_en": "Financing granted to individuals for personal purposes per bank terms."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "تمويل السيارات",
+    "title_en": "Auto Financing",
+    "desc_ar": "تمويل مخصص لشراء سيارة.",
+    "desc_en": "Financing dedicated to purchasing a car."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "التمويل العقاري",
+    "title_en": "Mortgage / Real Estate Financing",
+    "desc_ar": "تمويل لشراء أو بناء أو تحسين عقار وفق القواعد المنظمة.",
+    "desc_en": "Financing to purchase, build, or improve real estate according to governing rules."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "تمويل المشروعات",
+    "title_en": "Project Financing",
+    "desc_ar": "تمويل مخصص للنشاط الاقتصادي أو الاستثماري.",
+    "desc_en": "Financing dedicated to economic or investment activity."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "تمويل رأس المال العامل",
+    "title_en": "Working Capital Financing",
+    "desc_ar": "تمويل يستخدم لتغطية الاحتياجات التشغيلية للمشروع.",
+    "desc_en": "Financing used to cover the operational needs of a project."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "تمويل الأصول",
+    "title_en": "Asset Financing",
+    "desc_ar": "تمويل مخصص لشراء أصول أو معدات.",
+    "desc_en": "Financing dedicated to purchasing assets or equipment."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "تمويل قصير الأجل",
+    "title_en": "Short-Term Financing",
+    "desc_ar": "تمويل يستحق خلال فترة قصيرة نسبيًا.",
+    "desc_en": "Financing maturing within a relatively short period."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "تمويل متوسط الأجل",
+    "title_en": "Medium-Term Financing",
+    "desc_ar": "تمويل يمتد لفترة متوسطة.",
+    "desc_en": "Financing extending over a medium period."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "تمويل طويل الأجل",
+    "title_en": "Long-Term Financing",
+    "desc_ar": "تمويل يمتد لسنوات وفق شروطه.",
+    "desc_en": "Financing extending for years according to its terms."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "قرض استهلاكي",
+    "title_en": "Consumer Loan",
+    "desc_ar": "تمويل يستخدم لتلبية احتياجات استهلاكية.",
+    "desc_en": "Financing used to meet consumer needs."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القرض الشخصي",
+    "title_en": "Personal Loan",
+    "desc_ar": "تمويل يمنح للفرد وفق دخله وقدرته على السداد.",
+    "desc_en": "Financing granted to an individual based on income and repayment capacity."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "قرض بضمان شهادة",
+    "title_en": "Certificate-Backed Loan",
+    "desc_ar": "تمويل يكون مرتبطًا بضمان شهادة أو وديعة وفق شروط البنك.",
+    "desc_en": "Financing linked to a certificate or deposit collateral according to bank terms."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "قرض بضمان وديعة",
+    "title_en": "Deposit-Backed Loan",
+    "desc_ar": "تمويل يضمنه مبلغ مودع لدى البنك.",
+    "desc_en": "Financing secured by an amount deposited with the bank."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القسط الثابت",
+    "title_en": "Fixed Installment",
+    "desc_ar": "قسط دوري ثابت وفق جدول السداد.",
+    "desc_en": "A fixed periodic installment according to the repayment schedule."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القسط المتناقص",
+    "title_en": "Declining Installment",
+    "desc_ar": "قسط أو تكلفة تتراجع بمرور فترة السداد وفق طريقة الحساب.",
+    "desc_en": "An installment or cost that decreases over the repayment period per calculation method."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "أصل الدين",
+    "title_en": "Principal Debt",
+    "desc_ar": "المبلغ الأساسي المستحق قبل إضافة تكلفة التمويل.",
+    "desc_en": "The basic amount due prior to adding financing costs."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "رصيد الدين",
+    "title_en": "Debt Balance",
+    "desc_ar": "المبلغ المتبقي من أصل التمويل.",
+    "desc_en": "The remaining amount of the financing principal."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "السداد المبكر",
+    "title_en": "Early Repayment",
+    "desc_ar": "سداد التمويل كليًا أو جزئيًا قبل موعده.",
+    "desc_en": "Repaying financing in whole or in part ahead of schedule."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "السداد الجزئي",
+    "title_en": "Partial Repayment",
+    "desc_ar": "دفع جزء من المديونية قبل موعدها.",
+    "desc_en": "Paying part of the debt ahead of schedule."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "إعادة جدولة الدين",
+    "title_en": "Debt Rescheduling",
+    "desc_ar": "تعديل جدول السداد وفق اتفاق جديد.",
+    "desc_en": "Modifying the repayment schedule according to a new agreement."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "إعادة هيكلة التمويل",
+    "title_en": "Financing Restructuring",
+    "desc_ar": "تعديل شروط التمويل لمعالجة ظروف العميل أو تحسين هيكله.",
+    "desc_en": "Modifying financing terms to address customer circumstances or improve structure."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "فترة السماح للقرض",
+    "title_en": "Loan Grace Period",
+    "desc_ar": "فترة لا يُطلب خلالها سداد بعض الأقساط وفق الاتفاق.",
+    "desc_en": "A period during which certain installments are not required to be paid per agreement."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "مدة القرض",
+    "title_en": "Loan Term / Tenor",
+    "desc_ar": "الفترة من بداية التمويل حتى الاستحقاق النهائي.",
+    "desc_en": "The period from the beginning of financing until final maturity."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "تكلفة الاقتراض",
+    "title_en": "Borrowing Cost",
+    "desc_ar": "إجمالي ما يتحمله العميل مقابل الحصول على التمويل.",
+    "desc_en": "The total borne by the customer in exchange for obtaining financing."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "سعر الفائدة المدين",
+    "title_en": "Debit Interest Rate",
+    "desc_ar": "الفائدة التي يتحملها المقترض.",
+    "desc_en": "The interest borne by the borrower."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الفائدة على الرصيد المتناقص",
+    "title_en": "Declining Balance Interest",
+    "desc_ar": "فائدة تحسب على الرصيد المتبقي من أصل الدين.",
+    "desc_en": "Interest calculated on the remaining balance of the debt principal."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الفائدة البسيطة",
+    "title_en": "Simple Interest",
+    "desc_ar": "فائدة تحسب على أصل المبلغ دون إضافة الفوائد السابقة للأصل.",
+    "desc_en": "Interest calculated on the principal amount without adding previous interest to the principal."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الفائدة المركبة",
+    "title_en": "Compound Interest",
+    "desc_ar": "فائدة تحسب على الأصل والعوائد المتراكمة وفق آلية المنتج.",
+    "desc_en": "Interest calculated on the principal and accumulated returns according to product mechanism."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "نسبة عبء الدين",
+    "title_en": "Debt Burden Ratio (DBR)",
+    "desc_ar": "نسبة الالتزامات التمويلية إلى دخل العميل وفق القواعد المطبقة.",
+    "desc_en": "The ratio of financing commitments to customer income according to applied rules."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القدرة الائتمانية",
+    "title_en": "Credit Capacity",
+    "desc_ar": "قدرة العميل على تحمل وسداد التمويل.",
+    "desc_en": "The customer's ability to bear and repay financing."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الاستعلام الائتماني",
+    "title_en": "Credit Inquiry",
+    "desc_ar": "الحصول على معلومات عن السجل الائتماني للعميل.",
+    "desc_en": "Obtaining information on the customer's credit record."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التاريخ الائتماني",
+    "title_en": "Credit History",
+    "desc_ar": "سجل تعاملات العميل التمويلية وسلوكه في السداد.",
+    "desc_en": "A record of the customer's financing transactions and repayment behavior."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التصنيف الائتماني",
+    "title_en": "Credit Rating",
+    "desc_ar": "تقييم لمستوى مخاطر الائتمان.",
+    "desc_en": "An evaluation of credit risk level."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الدرجة الائتمانية",
+    "title_en": "Credit Score",
+    "desc_ar": "مؤشر رقمي يعكس مستوى الجدارة الائتمانية وفق نموذج معين.",
+    "desc_en": "A numerical indicator reflecting the level of creditworthiness according to a model."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الضامن",
+    "title_en": "Guarantor",
+    "desc_ar": "شخص أو جهة تلتزم بالسداد عند تحقق شروط الضمان.",
+    "desc_en": "A person or entity committed to repayment when guarantee conditions are met."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الكفيل",
+    "title_en": "Surety / Sponsor",
+    "desc_ar": "طرف يتحمل التزامًا معينًا تجاه الدائن وفق عقد الكفالة.",
+    "desc_en": "A party bearing a specific obligation toward the creditor under a surety contract."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الضمان العيني",
+    "title_en": "Tangible / Real Collateral",
+    "desc_ar": "ضمان قائم على أصل محدد.",
+    "desc_en": "A guarantee based on a specific asset."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الضمان الشخصي",
+    "title_en": "Personal Guarantee",
+    "desc_ar": "ضمان يعتمد على التزام شخص أو جهة.",
+    "desc_en": "A guarantee relying on the commitment of a person or entity."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الرهن",
+    "title_en": "Pledge / Mortgage",
+    "desc_ar": "تخصيص أصل لضمان الوفاء بالدين وفق القانون.",
+    "desc_en": "Allocating an asset to secure debt fulfillment according to law."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الرهن العقاري",
+    "title_en": "Real Estate Mortgage",
+    "desc_ar": "رهن عقار لضمان التمويل.",
+    "desc_en": "Mortgaging a property to secure financing."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القيمة السوقية للضمان",
+    "title_en": "Collateral Market Value",
+    "desc_ar": "القيمة المقدرة للأصل في السوق.",
+    "desc_en": "The estimated value of the asset in the market."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "نسبة تغطية الضمان",
+    "title_en": "Collateral Coverage Ratio",
+    "desc_ar": "مدى تغطية قيمة الضمان للالتزام.",
+    "desc_en": "The extent to which the collateral value covers the obligation."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "مخاطر الطرف المقابل",
+    "title_en": "Counterparty Risk",
+    "desc_ar": "احتمال عدم وفاء الطرف الآخر بالتزامه.",
+    "desc_en": "The probability that the other party will fail to fulfill its obligation."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "مخاطر التركّز",
+    "title_en": "Concentration Risk",
+    "desc_ar": "مخاطر ناتجة عن تركز التعرضات في عميل أو قطاع أو منطقة.",
+    "desc_en": "Risks resulting from concentration of exposures in a customer, sector, or region."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "اختبار الضغط",
+    "title_en": "Stress Testing",
+    "desc_ar": "تحليل قدرة البنك على تحمل سيناريوهات اقتصادية صعبة.",
+    "desc_en": "Analyzing the bank's ability to withstand difficult economic scenarios."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "خطة الطوارئ",
+    "title_en": "Contingency Plan",
+    "desc_ar": "إجراءات معدة للتعامل مع الأزمات والمخاطر.",
+    "desc_en": "Procedures prepared to deal with crises and risks."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الإنذار المبكر",
+    "title_en": "Early Warning",
+    "desc_ar": "مؤشرات تساعد على اكتشاف المخاطر قبل تفاقمها.",
+    "desc_en": "Indicators helping to detect risks before they escalate."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التعرض الائتماني",
+    "title_en": "Credit Exposure",
+    "desc_ar": "حجم المخاطر المرتبطة بعميل أو طرف مقابل.",
+    "desc_en": "The volume of risks associated with a customer or counterparty."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "حدود الائتمان",
+    "title_en": "Credit Limits",
+    "desc_ar": "الحدود القصوى للتسهيلات الممنوحة.",
+    "desc_en": "The maximum limits of granted facilities."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تسعير المخاطر",
+    "title_en": "Risk Pricing",
+    "desc_ar": "تحديد تكلفة التمويل بما يتناسب مع مستوى المخاطر.",
+    "desc_en": "Determining financing costs commensurate with risk levels."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "خطاب الضمان",
+    "title_en": "Letter of Guarantee",
+    "desc_ar": "تعهد يصدره البنك لصالح مستفيد بناءً على طلب العميل.",
+    "desc_en": "An undertaking issued by the bank in favor of a beneficiary upon customer request."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "خطاب اعتماد",
+    "title_en": "Letter of Credit",
+    "desc_ar": "تعهد مصرفي بالدفع للمستفيد عند استيفاء الشروط والمستندات المطلوبة.",
+    "desc_en": "A banking commitment to pay the beneficiary upon fulfilling required terms and documents."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الاعتماد المستندي",
+    "title_en": "Documentary Credit",
+    "desc_ar": "وسيلة مصرفية لتمويل التجارة تعتمد على مستندات وشروط محددة.",
+    "desc_en": "A banking trade finance tool relying on specific documents and terms."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المستورد",
+    "title_en": "Importer",
+    "desc_ar": "الطرف الذي يشتري السلع أو الخدمات من الخارج.",
+    "desc_en": "The party purchasing goods or services from abroad."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المصدر",
+    "title_en": "Exporter",
+    "desc_ar": "الطرف الذي يبيع السلع أو الخدمات إلى الخارج.",
+    "desc_en": "The party selling goods or services abroad."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المستندات التجارية",
+    "title_en": "Commercial Documents",
+    "desc_ar": "مستندات تثبت أو تدعم المعاملة التجارية.",
+    "desc_en": "Documents proving or supporting the commercial transaction."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الفاتورة التجارية",
+    "title_en": "Commercial Invoice",
+    "desc_ar": "مستند يوضح قيمة وتفاصيل السلع أو الخدمات.",
+    "desc_en": "A document showing the value and details of goods or services."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "بوليصة الشحن",
+    "title_en": "Bill of Lading",
+    "desc_ar": "مستند مرتبط بنقل البضائع.",
+    "desc_en": "A document related to the transportation of goods."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التحصيل المستندي",
+    "title_en": "Documentary Collection",
+    "desc_ar": "تحصيل قيمة مستندات تجارية من خلال البنوك وفق تعليمات محددة.",
+    "desc_en": "Collecting commercial document values through banks according to specific instructions."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تمويل الواردات",
+    "title_en": "Import Financing",
+    "desc_ar": "تمويل يهدف إلى دعم عمليات شراء السلع من الخارج.",
+    "desc_en": "Financing aiming to support goods purchasing operations from abroad."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تمويل الصادرات",
+    "title_en": "Export Financing",
+    "desc_ar": "تمويل يساعد المصدرين على تنفيذ عمليات التصدير.",
+    "desc_en": "Financing helping exporters execute export operations."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تمويل ما قبل الشحن",
+    "title_en": "Pre-Shipment Financing",
+    "desc_ar": "تمويل يمنح قبل تصدير البضائع.",
+    "desc_en": "Financing granted prior to the export of goods."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تمويل ما بعد الشحن",
+    "title_en": "Post-Shipment Financing",
+    "desc_ar": "تمويل يرتبط بالفترة التالية لشحن البضائع.",
+    "desc_en": "Financing related to the period following the shipment of goods."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رأس المال العامل",
+    "title_en": "Working Capital",
+    "desc_ar": "الأموال اللازمة لإدارة النشاط اليومي.",
+    "desc_en": "Funds necessary to manage daily activity."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "التسهيلات الدوارة",
+    "title_en": "Revolving Facilities",
+    "desc_ar": "تسهيل يمكن استخدامه وسداده وإعادة استخدامه ضمن الحد المتفق عليه.",
+    "desc_en": "A facility that can be used, repaid, and reused within the agreed limit."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "حد السحب",
+    "title_en": "Drawing Limit",
+    "desc_ar": "الحد الأقصى المتاح للسحب من التسهيل.",
+    "desc_en": "The maximum limit available for drawing from the facility."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تمويل الموردين",
+    "title_en": "Supplier Financing",
+    "desc_ar": "تمويل يساعد المورد على الحصول على مستحقاته أو إدارة السيولة.",
+    "desc_en": "Financing helping a supplier obtain receivables or manage liquidity."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تمويل المشتري",
+    "title_en": "Buyer Financing",
+    "desc_ar": "تمويل يساعد المشتري على سداد قيمة مشترياته.",
+    "desc_en": "Financing helping a buyer pay for purchases."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تمويل سلسلة الإمداد",
+    "title_en": "Supply Chain Financing",
+    "desc_ar": "تمويل يرتبط بتدفقات الأموال بين أطراف سلسلة التوريد.",
+    "desc_en": "Financing related to cash flows between supply chain parties."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "خصم الأوراق التجارية",
+    "title_en": "Discounting Commercial Papers",
+    "desc_ar": "حصول حامل الورقة على قيمتها قبل الاستحقاق مقابل خصم معين.",
+    "desc_en": "The paper holder receiving its value before maturity against a certain discount."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "نظام المدفوعات",
+    "title_en": "Payment System",
+    "desc_ar": "البنية التي يتم من خلالها تنفيذ وتسوية المدفوعات.",
+    "desc_en": "The infrastructure through which payments are executed and settled."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "نظام التسوية الإجمالية اللحظية",
+    "title_en": "Real-Time Gross Settlement (RTGS)",
+    "desc_ar": "نظام تتم فيه تسوية المدفوعات بين البنوك بشكل منفصل وفي الوقت الفعلي.",
+    "desc_en": "A system where interbank payments are settled separately and in real time."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المقاصة الإلكترونية",
+    "title_en": "Electronic Clearing",
+    "desc_ar": "تسوية المدفوعات إلكترونيًا بين المؤسسات.",
+    "desc_en": "Electronically settling payments between institutions."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "أمر التحويل",
+    "title_en": "Transfer Order",
+    "desc_ar": "تعليمات لتحويل مبلغ إلى حساب آخر.",
+    "desc_en": "Instructions to transfer an amount to another account."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التحويل الدوري",
+    "title_en": "Standing Order / Periodic Transfer",
+    "desc_ar": "تحويل يتم تنفيذه بصورة متكررة وفق تعليمات مسبقة.",
+    "desc_en": "A transfer executed repeatedly according to prior instructions."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحوالة المصرفية",
+    "title_en": "Bank Remittance",
+    "desc_ar": "عملية نقل أموال إلى مستفيد.",
+    "desc_en": "The process of moving funds to a beneficiary."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التحويل الفوري",
+    "title_en": "Instant Transfer",
+    "desc_ar": "تحويل يتم تنفيذه وتسويته بسرعة وفق النظام المستخدم.",
+    "desc_en": "A transfer executed and settled quickly according to the system used."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رسوم التحويل",
+    "title_en": "Transfer Fees",
+    "desc_ar": "تكلفة يفرضها البنك على تنفيذ التحويل وفق جدول الرسوم.",
+    "desc_en": "A cost imposed by the bank for executing a transfer per fee schedule."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "عمولة البنك",
+    "title_en": "Bank Commission",
+    "desc_ar": "مبلغ يدفع مقابل خدمة مصرفية.",
+    "desc_en": "An amount paid in exchange for a banking service."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "مصاريف إدارية",
+    "title_en": "Administrative Fees",
+    "desc_ar": "رسوم مرتبطة بإجراءات أو خدمات معينة.",
+    "desc_en": "Fees associated with certain procedures or services."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رسوم إصدار",
+    "title_en": "Issuance Fees",
+    "desc_ar": "تكلفة إصدار منتج أو مستند مصرفي.",
+    "desc_en": "The cost of issuing a banking product or document."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رسوم التجديد",
+    "title_en": "Renewal Fees",
+    "desc_ar": "تكلفة تجديد خدمة أو منتج.",
+    "desc_en": "The cost of renewing a service or product."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رسوم السحب",
+    "title_en": "Withdrawal Fees",
+    "desc_ar": "تكلفة قد تفرض على بعض عمليات السحب.",
+    "desc_en": "A cost that may be imposed on certain withdrawal operations."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رسوم الاستعلام",
+    "title_en": "Inquiry Fees",
+    "desc_ar": "تكلفة مرتبطة ببعض عمليات الاستعلام.",
+    "desc_en": "A cost associated with certain inquiry operations."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "رسوم عدم كفاية الرصيد",
+    "title_en": "Insufficient Funds Fees",
+    "desc_ar": "رسوم قد تطبق عند عدم كفاية الرصيد لتنفيذ عملية.",
+    "desc_en": "Fees that may apply when there are insufficient funds to execute a transaction."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "المدفوعات الرقمية",
+    "title_en": "Digital Payments",
+    "desc_ar": "عمليات الدفع باستخدام وسائل إلكترونية.",
+    "desc_en": "Payment operations using electronic means."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "الدفع اللاتلامسي",
+    "title_en": "Contactless Payment",
+    "desc_ar": "دفع باستخدام تقنية الاتصال قريب المدى أو تقنية مماثلة.",
+    "desc_en": "Payment using near-field communication (NFC) technology or similar."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "رمز QR",
+    "title_en": "QR Code",
+    "desc_ar": "رمز يمكن استخدامه لتنفيذ أو بدء بعض عمليات الدفع.",
+    "desc_en": "A code that can be used to execute or initiate certain payment operations."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "بوابة الدفع",
+    "title_en": "Payment Gateway",
+    "desc_ar": "منصة إلكترونية تربط العميل والتاجر ومقدمي خدمات الدفع.",
+    "desc_en": "An electronic platform connecting the customer, merchant, and payment service providers."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "التاجر الإلكتروني",
+    "title_en": "E-Merchant",
+    "desc_ar": "جهة تبيع السلع أو الخدمات عبر الإنترنت.",
+    "desc_en": "An entity selling goods or services online."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "البنك المركزي",
+    "title_en": "Central Bank",
+    "desc_ar": "الجهة المسؤولة عن السياسة النقدية وإدارة النظام النقدي وفق القانون.",
+    "desc_en": "The authority responsible for monetary policy and managing the monetary system per law."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "استقلالية البنك المركزي",
+    "title_en": "Central Bank Independence",
+    "desc_ar": "مدى استقلال قرارات البنك المركزي عن التدخلات غير المقررة قانونًا.",
+    "desc_en": "The degree of independence of central bank decisions from unauthorized interventions."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "القاعدة النقدية",
+    "title_en": "Monetary Base",
+    "desc_ar": "مكونات النقد التي تشكل الأساس لبعض العمليات النقدية.",
+    "desc_en": "Money components forming the basis for certain monetary operations."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "عرض النقود",
+    "title_en": "Money Supply",
+    "desc_ar": "إجمالي كمية النقود المتاحة في الاقتصاد وفق تعريف المؤشر.",
+    "desc_en": "The total quantity of money available in the economy according to the index definition."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "السيولة المحلية",
+    "title_en": "Domestic Liquidity",
+    "desc_ar": "حجم السيولة المتاحة داخل الاقتصاد.",
+    "desc_en": "The volume of liquidity available within the economy."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "الكتلة النقدية",
+    "title_en": "Monetary Mass",
+    "desc_ar": "مجموعة من مكونات النقود وفق تعريف اقتصادي محدد.",
+    "desc_en": "A set of money components according to a specific economic definition."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "عمليات السوق المفتوحة",
+    "title_en": "Open Market Operations (OMO)",
+    "desc_ar": "عمليات يجريها البنك المركزي للتأثير في السيولة وأسعار الفائدة.",
+    "desc_en": "Operations conducted by the central bank to influence liquidity and interest rates."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "شراء الأوراق المالية",
+    "title_en": "Purchase of Securities",
+    "desc_ar": "عملية قد يستخدمها البنك المركزي لضخ السيولة وفق سياسته.",
+    "desc_en": "An operation the central bank may use to inject liquidity according to its policy."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "بيع الأوراق المالية",
+    "title_en": "Sale of Securities",
+    "desc_ar": "عملية قد تستخدم لسحب السيولة من النظام المصرفي.",
+    "desc_en": "An operation that may be used to withdraw liquidity from the banking system."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "امتصاص السيولة",
+    "title_en": "Liquidity Absorption",
+    "desc_ar": "إجراءات تهدف إلى خفض السيولة المتاحة لدى البنوك.",
+    "desc_en": "Measures aimed at reducing liquidity available to banks."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "ضخ السيولة",
+    "title_en": "Liquidity Injection",
+    "desc_ar": "إجراءات تؤدي إلى زيادة السيولة في النظام المصرفي.",
+    "desc_en": "Measures leading to an increase in banking system liquidity."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "نافذة الإيداع",
+    "title_en": "Deposit Window",
+    "desc_ar": "آلية تسمح للبنوك بإيداع السيولة لدى البنك المركزي وفق الشروط المحددة.",
+    "desc_en": "A mechanism allowing banks to deposit liquidity with the central bank per terms."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "نافذة الإقراض",
+    "title_en": "Lending Window",
+    "desc_ar": "آلية تسمح للبنوك بالحصول على سيولة من البنك المركزي وفق الشروط المحددة.",
+    "desc_en": "A mechanism allowing banks to obtain liquidity from the central bank per terms."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "سعر الفائدة الأساسي",
+    "title_en": "Benchmark Interest Rate",
+    "desc_ar": "سعر مرجعي مهم في توجيه السياسة النقدية.",
+    "desc_en": "An important reference rate in guiding monetary policy."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "اجتماع لجنة السياسة النقدية",
+    "title_en": "Monetary Policy Committee Meeting",
+    "desc_ar": "اجتماع دوري لمراجعة وتحديد توجهات أسعار الفائدة والسياسة النقدية.",
+    "desc_en": "A periodic meeting to review and determine interest rate and monetary policy trends."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "التيسير النقدي",
+    "title_en": "Monetary Easing",
+    "desc_ar": "سياسة تهدف إلى دعم النشاط الاقتصادي من خلال تخفيف الأوضاع النقدية.",
+    "desc_en": "A policy aiming to support economic activity by easing monetary conditions."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "التشديد النقدي",
+    "title_en": "Monetary Tightening",
+    "desc_ar": "سياسة تهدف إلى الحد من الضغوط التضخمية عبر تشديد الأوضاع النقدية.",
+    "desc_en": "A policy aiming to curb inflationary pressures through tightening monetary conditions."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "التوقعات التضخمية",
+    "title_en": "Inflation Expectations",
+    "desc_ar": "توقعات الأفراد والمؤسسات بشأن معدلات التضخم المستقبلية.",
+    "desc_en": "Expectations of individuals and institutions regarding future inflation rates."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "استقرار الأسعار",
+    "title_en": "Price Stability",
+    "desc_ar": "هدف يتمثل في الحفاظ على التضخم عند مستويات مستقرة ومناسبة وفق سياسة الدولة.",
+    "desc_en": "An objective of maintaining inflation at stable and appropriate levels per state policy."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "العملة الأجنبية",
+    "title_en": "Foreign Currency",
+    "desc_ar": "عملة صادرة عن دولة أخرى.",
+    "desc_en": "Currency issued by another country."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "العملة المحلية",
+    "title_en": "Local Currency",
+    "desc_ar": "العملة الرسمية للدولة.",
+    "desc_en": "The official currency of the country."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "سلة العملات",
+    "title_en": "Currency Basket",
+    "desc_ar": "مجموعة عملات تستخدم كمقياس أو مرجع.",
+    "desc_en": "A group of currencies used as a measure or reference."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "سعر الصرف الفوري",
+    "title_en": "Spot Exchange Rate",
+    "desc_ar": "سعر العملة في معاملات التسوية الفورية.",
+    "desc_en": "The currency rate in spot settlement transactions."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "سعر الصرف الآجل",
+    "title_en": "Forward Exchange Rate",
+    "desc_ar": "سعر يتم الاتفاق عليه لمعاملة تسوية مستقبلية.",
+    "desc_en": "An agreed-upon rate for a future settlement transaction."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "العقد الآجل للعملة",
+    "title_en": "Currency Forward Contract",
+    "desc_ar": "اتفاق لشراء أو بيع عملة في تاريخ مستقبلي بسعر متفق عليه.",
+    "desc_en": "An agreement to buy or sell currency at a future date at an agreed price."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "مخاطر العملة",
+    "title_en": "Currency Risk",
+    "desc_ar": "احتمال الخسارة نتيجة تغير أسعار الصرف.",
+    "desc_en": "The probability of loss resulting from exchange rate changes."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "مركز العملة",
+    "title_en": "Currency Position",
+    "desc_ar": "صافي تعرض المؤسسة لعملة معينة.",
+    "desc_en": "The institution's net exposure to a specific currency."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "صافي المركز المفتوح",
+    "title_en": "Net Open Position",
+    "desc_ar": "الفرق بين الأصول والالتزامات والتعرضات بعملة معينة وفق القواعد المحاسبية والرقابية.",
+    "desc_en": "The difference between assets, liabilities, and exposures in a currency per accounting rules."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "سوق النقد",
+    "title_en": "Money Market",
+    "desc_ar": "سوق للتعامل في أدوات مالية قصيرة الأجل.",
+    "desc_en": "A market for dealing in short-term financial instruments."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "الورقة المالية",
+    "title_en": "Security",
+    "desc_ar": "أداة مالية تمثل حقًا ماليًا أو ملكية وفق طبيعتها.",
+    "desc_en": "A financial instrument representing a financial right or ownership."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "السهم",
+    "title_en": "Stock / Share",
+    "desc_ar": "ورقة مالية تمثل حصة في ملكية شركة.",
+    "desc_en": "A security representing a share in company ownership."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "السند",
+    "title_en": "Bond",
+    "desc_ar": "أداة دين تمثل التزامًا على الجهة المصدرة.",
+    "desc_en": "A debt instrument representing an obligation on the issuer."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "الصك",
+    "title_en": "Sukuk",
+    "desc_ar": "أداة مالية متوافقة مع أحكام الشريعة وفق هيكل الإصدار.",
+    "desc_en": "A financial instrument compliant with Sharia rules according to the issuance structure."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "صندوق الاستثمار",
+    "title_en": "Investment Fund",
+    "desc_ar": "وعاء يجمع أموال المستثمرين ويستثمرها وفق سياسة محددة.",
+    "desc_en": "A vehicle pooling investors' funds and investing them per a specific policy."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "مدير الاستثمار",
+    "title_en": "Investment Manager",
+    "desc_ar": "جهة تتولى إدارة الاستثمارات وفق التفويض.",
+    "desc_en": "An entity undertaking the management of investments per mandate."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "المحفظة الاستثمارية",
+    "title_en": "Investment Portfolio",
+    "desc_ar": "مجموعة من الاستثمارات المملوكة لمستثمر.",
+    "desc_en": "A collection of investments owned by an investor."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "تنويع الاستثمار",
+    "title_en": "Investment Diversification",
+    "desc_ar": "توزيع الأموال على أصول أو استثمارات مختلفة لتقليل التركّز.",
+    "desc_en": "Distributing funds across different assets or investments to reduce concentration."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "مخاطر الاستثمار",
+    "title_en": "Investment Risk",
+    "desc_ar": "احتمال انخفاض قيمة الاستثمار أو تحقيق عائد أقل من المتوقع.",
+    "desc_en": "The probability of a decrease in investment value or achieving lower-than-expected returns."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد على الاستثمار",
+    "title_en": "Return on Investment (ROI)",
+    "desc_ar": "نسبة العائد المحقق مقارنة بالمبلغ المستثمر.",
+    "desc_en": "The percentage of return realized compared to the invested amount."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "التوزيعات النقدية",
+    "title_en": "Cash Dividends",
+    "desc_ar": "مبالغ توزعها الشركة على المساهمين وفق قرارها والقواعد المنظمة.",
+    "desc_en": "Amounts distributed by a company to shareholders per its decision and governing rules."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "الأرباح الرأسمالية",
+    "title_en": "Capital Gains",
+    "desc_ar": "أرباح تنتج عن ارتفاع قيمة الأصل وبيعه بسعر أعلى.",
+    "desc_en": "Profits resulting from an increase in asset value and selling it at a higher price."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "الخسارة الرأسمالية",
+    "title_en": "Capital Loss",
+    "desc_ar": "خسارة تنتج عن بيع الأصل بسعر أقل من تكلفة اقتنائه.",
+    "desc_en": "Losses resulting from selling an asset at a price lower than acquisition cost."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "القيمة السوقية",
+    "title_en": "Market Value",
+    "desc_ar": "قيمة الأصل وفق سعر السوق.",
+    "desc_en": "The value of an asset according to market price."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "القيمة الدفترية",
+    "title_en": "Book Value",
+    "desc_ar": "قيمة الأصل أو حقوق الملكية وفق السجلات المحاسبية.",
+    "desc_en": "The value of an asset or equity according to accounting records."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "القيمة العادلة",
+    "title_en": "Fair Value",
+    "desc_ar": "قيمة تقديرية تعكس السعر الذي يمكن أن تتم به معاملة بين أطراف السوق في ظروف مناسبة.",
+    "desc_en": "An estimated value reflecting the price at which a transaction between market parties can occur."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "الرسملة السوقية",
+    "title_en": "Market Capitalization",
+    "desc_ar": "القيمة السوقية الإجمالية لأسهم شركة مدرجة.",
+    "desc_en": "The total market value of a listed company's shares."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "مؤشر البورصة",
+    "title_en": "Stock Index",
+    "desc_ar": "مؤشر يقيس أداء مجموعة من الأسهم وفق منهجية محددة.",
+    "desc_en": "An index measuring the performance of a group of shares per a specific methodology."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "التداول اليومي",
+    "title_en": "Day Trading",
+    "desc_ar": "عمليات شراء وبيع تتم خلال جلسة التداول.",
+    "desc_en": "Buying and selling operations conducted during the trading session."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "حجم التداول",
+    "title_en": "Trading Volume",
+    "desc_ar": "إجمالي كمية أو قيمة الأوراق المالية المتداولة وفق المؤشر المستخدم.",
+    "desc_en": "The total quantity or value of securities traded according to the index used."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الإيرادات",
+    "title_en": "Revenues",
+    "desc_ar": "المبالغ التي تحققها المؤسسة من أنشطتها.",
+    "desc_en": "Amounts generated by the institution from its activities."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المصروفات",
+    "title_en": "Expenses",
+    "desc_ar": "التكاليف التي تتحملها المؤسسة لممارسة نشاطها.",
+    "desc_en": "Costs borne by the institution to carry out its activity."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "صافي الربح",
+    "title_en": "Net Profit",
+    "desc_ar": "الربح المتبقي بعد خصم المصروفات والتكاليف وفق القوائم المالية.",
+    "desc_en": "Remaining profit after deducting expenses and costs according to financial statements."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "صافي الخسارة",
+    "title_en": "Net Loss",
+    "desc_ar": "زيادة المصروفات والتكاليف على الإيرادات خلال الفترة.",
+    "desc_en": "The excess of expenses and costs over revenues during the period."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الميزانية العمومية",
+    "title_en": "Balance Sheet",
+    "desc_ar": "قائمة توضح الأصول والخصوم وحقوق الملكية في تاريخ معين.",
+    "desc_en": "A statement showing assets, liabilities, and equity on a specific date."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "قائمة الدخل",
+    "title_en": "Income Statement",
+    "desc_ar": "قائمة توضح الإيرادات والمصروفات والنتيجة المالية خلال فترة.",
+    "desc_en": "A statement showing revenues, expenses, and financial results over a period."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التدفقات النقدية",
+    "title_en": "Cash Flows",
+    "desc_ar": "حركة النقد الداخل والخارج خلال فترة معينة.",
+    "desc_en": "The movement of cash inflows and outflows during a specific period."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الإهلاك",
+    "title_en": "Depreciation / Amortization",
+    "desc_ar": "توزيع تكلفة الأصل القابل للإهلاك على عمره الإنتاجي.",
+    "desc_en": "Allocating the cost of a depreciable asset over its useful life."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الأصول السائلة",
+    "title_en": "Liquid Assets",
+    "desc_ar": "أصول يمكن تحويلها إلى نقد بسرعة نسبيًا.",
+    "desc_en": "Assets that can be converted into cash relatively quickly."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الأصول غير السائلة",
+    "title_en": "Illiquid Assets",
+    "desc_ar": "أصول يصعب تحويلها إلى نقد سريعًا دون تأثير على قيمتها.",
+    "desc_en": "Assets difficult to convert into cash quickly without impacting value."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحوكمة",
+    "title_en": "Governance",
+    "desc_ar": "منظومة القواعد التي تنظم إدارة المؤسسة والرقابة عليها.",
+    "desc_en": "The system of rules regulating the management and oversight of an institution."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الرقابة الداخلية",
+    "title_en": "Internal Control",
+    "desc_ar": "إجراءات وأنظمة تهدف إلى حماية الأصول وضمان سلامة العمليات.",
+    "desc_en": "Procedures and systems aimed at protecting assets and ensuring operational integrity."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المراجعة الداخلية",
+    "title_en": "Internal Audit",
+    "desc_ar": "فحص مستقل نسبيًا للعمليات والضوابط داخل المؤسسة.",
+    "desc_en": "A relatively independent examination of operations and controls within the institution."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المراجعة الخارجية",
+    "title_en": "External Audit",
+    "desc_ar": "فحص القوائم المالية بواسطة جهة مستقلة.",
+    "desc_en": "Examining financial statements by an independent entity."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الامتثال",
+    "title_en": "Compliance",
+    "desc_ar": "الالتزام بالقوانين والتعليمات والسياسات المعمول بها.",
+    "desc_en": "Adherence to applicable laws, instructions, and policies."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "وظيفة الالتزام",
+    "title_en": "Compliance Function",
+    "desc_ar": "وظيفة تتابع مدى التزام المؤسسة بالمتطلبات القانونية والرقابية.",
+    "desc_en": "A function monitoring the institution's adherence to legal and regulatory requirements."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "مكافحة غسل الأموال",
+    "title_en": "Anti-Money Laundering (AML)",
+    "desc_ar": "إجراءات تهدف إلى منع استخدام النظام المالي لغسل الأموال.",
+    "desc_en": "Measures aimed at preventing the use of the financial system for money laundering."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "المستفيد الحقيقي",
+    "title_en": "Ultimate Beneficial Owner (UBO)",
+    "desc_ar": "الشخص الطبيعي الذي يملك أو يسيطر فعليًا على العميل أو يستفيد منه.",
+    "desc_en": "The natural person who actually owns or controls the customer or benefits from it."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "العقوبات المصرفية",
+    "title_en": "Banking Penalties",
+    "desc_ar": "إجراءات أو قيود قد تفرض نتيجة مخالفة القوانين أو التعليمات أو شروط التعامل.",
+    "desc_en": "Procedures or restrictions that may be imposed due to violating laws, instructions, or terms."
+  }
+]
