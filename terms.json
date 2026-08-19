@@ -8,75 +8,83 @@
     "desc_en": "The rate set by the central bank to guide monetary policy and control inflation rates."
   },
   {
-    "category_ar": "البنوك",
-    "category_en": "Banks",
-    "title_ar": "الاعتمادات المستندية",
-    "title_en": "Letters of Credit",
-    "desc_ar": "تعهد كتابي صادر من البنك بضمان سداد قيمة البضائع للمستورد وفق شروط محددة.",
-    "desc_en": "A written undertaking issued by a bank guaranteeing payment for goods to the importer according to specified terms."
+    "category_ar": "المؤسسات الدولية",
+    "category_en": "Int. Institutions",
+    "title_ar": "البنك الفيدرالي الأمريكي",
+    "title_en": "Federal Reserve System",
+    "desc_ar": "البنك المركزي للولايات المتحدة الأمريكية، وهو المسؤول عن وضع السياسة النقدية وأسعار الفائدة العالمية.",
+    "desc_en": "The central bank of the United States, responsible for formulating monetary policy and global interest rates."
+  },
+  {
+    "category_ar": "المؤسسات الدولية",
+    "category_en": "Int. Institutions",
+    "title_ar": "صندوق النقد الدولي",
+    "title_en": "International Monetary Fund (IMF)",
+    "desc_ar": "منظمة دولية تعمل على تعزيز التعاون النقدي العالمي وتوفير القروض للدول لدعم استقرار اقتصاداتها.",
+    "desc_en": "An international organization working to foster global monetary cooperation and provide loans to countries to stabilize economies."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "المؤشر الرئيسي (إيجي إكس 30)",
+    "title_en": "Main Index (EGX 30)",
+    "desc_ar": "مؤشر يقيس أداء أفضل 30 شركة من حيث الأداء والسيولة في البورصة المصرية.",
+    "desc_en": "An index measuring the performance of the top 30 companies in terms of activity and liquidity in the Egyptian Exchange."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "الاكتتاب العام الأولي",
+    "title_en": "Initial Public Offering (IPO)",
+    "desc_ar": "عملية طرح أسهم الشركة للجمهور لأول مرة في البورصة لجمع رأس مال إضافي وتوسيع قاعدة المساهمين.",
+    "desc_en": "The process of offering a company's shares to the public for the first time in the stock exchange to raise capital."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "المحافظ الإلكترونية",
+    "title_en": "Digital Wallets",
+    "desc_ar": "تطبيقات مالية رقمية على الهواتف تتيح تحويل الأموال ودفع الفواتير وشراء المنتجات بسهولة وأمان.",
+    "desc_en": "Digital financial mobile applications that allow users to transfer money, pay bills, and purchase products easily and securely."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "الخدمات المصرفية المفتوحة",
+    "title_en": "Open Banking",
+    "desc_ar": "نظام يتيح للمستھلكين مشاركة بياناتهم المالية بأمان مع مزودي الخدمات الماليين الآخرين عبر واجهات برمجية.",
+    "desc_en": "A system that allows consumers to safely share their financial data with other financial service providers via APIs."
   },
   {
     "category_ar": "الاستثمار",
     "category_en": "Investment",
     "title_ar": "صناديق الاستثمار",
     "title_en": "Investment Funds",
-    "desc_ar": "وعاء استثماري يجمع الأموال من عدة مستثمرين لشراء محفظة متنوعة من الأصول والأسهم.",
+    "desc_ar": "وعاء استثماري يجمع الأموال من عدة مستثمرين لشراء محفظة متنوعة من الأصول والأسهم تحت إدارة خبيرة.",
     "desc_en": "An investment vehicle that pools money from multiple investors to purchase a diversified portfolio of assets and stocks."
-  },
-  {
-    "category_ar": "القروض",
-    "category_en": "Loans",
-    "title_ar": "التسهيلات الائتمانية",
-    "title_en": "Credit Facilities",
-    "desc_ar": "مبالغ مالية يتيحها البنك للعميل (أفراد أو شركات) لمواجهة الاحتياجات التمويلية المختلفة.",
-    "desc_en": "Financial amounts provided by a bank to a customer (individuals or companies) to meet various financing needs."
-  },
-  {
-    "category_ar": "البنك المركزي",
-    "category_en": "Central Bank",
-    "title_ar": "الاحتياطي النقدي الأجنبي",
-    "title_en": "Foreign Exchange Reserves",
-    "desc_ar": "الأصول بالعملات الأجنبية يحتفظ بها البنك المركزي لمواجهة الأزمات ودعم الاقتصاد.",
-    "desc_en": "Foreign currency assets held by the central bank to face crises and support the economy."
   },
   {
     "category_ar": "الاستثمار",
     "category_en": "Investment",
     "title_ar": "أذون الخزانة",
     "title_en": "Treasury Bills",
-    "desc_ar": "أدوات دين حكومية قصيرة الأجل تصدرها وزارة المالية لاقتراض الأموال من السوق.",
-    "desc_en": "Short-term government debt instruments issued by the Ministry of Finance to borrow money from the market."
-  },
-  {
-    "category_ar": "البنوك",
-    "category_en": "Banks",
-    "title_ar": "حساب التوفير",
-    "title_en": "Savings Account",
-    "desc_ar": "حساب بنكي يتيح للعملاء إيداع أموالهم والحصول على فائدة دورية مع سهولة السحب.",
-    "desc_en": "A bank account that allows customers to deposit money and earn periodic interest with ease of withdrawal."
+    "desc_ar": "أدوات دين حكومية قصيرة الأجل تصدرها وزارة المالية لتمويل عجز الموازنة واقتراض الأموال من السوق.",
+    "desc_en": "Short-term government debt instruments issued by the Ministry of Finance to finance budget deficits and borrow money."
   },
   {
     "category_ar": "القروض",
     "category_en": "Loans",
     "title_ar": "التمويل العقاري",
     "title_en": "Mortgage Finance",
-    "desc_ar": "قرض طويل الأجل مخصص لشراء أو بناء عقار، بضمان رهن هذا العقار للبنك.",
-    "desc_en": "A long-term loan designated for purchasing or building a property, secured by mortgaging that property to the bank."
+    "desc_ar": "قرض طويل الأجل مخصص لشراء أو بناء عقار، بضمان رهن هذا العقار لصالح البنك المانح.",
+    "desc_en": "A long-term loan designated for purchasing or building property, secured by a mortgage on that property."
   },
   {
-    "category_ar": "الاستثمار",
-    "category_en": "Investment",
-    "title_ar": "الأسهم",
-    "title_en": "Stocks",
-    "desc_ar": "صكوك تثبت ملكية حاملها في رأس مال شركة معينة، وتمنحه حقاً في أرباحها.",
-    "desc_en": "Certificates proving the holder's ownership in a company's capital, granting them a right to its profits."
-  },
-  {
-    "category_ar": "البنك المركزي",
-    "category_en": "Central Bank",
-    "title_ar": "سياسة نقدية",
-    "title_en": "Monetary Policy",
-    "desc_ar": "الإجراءات التي يتخذها البنك المركزي للتحكم في عرض النقد وأسعار الفائدة لتحقيق الاستقرار.",
-    "desc_en": "Actions taken by the central bank to control money supply and interest rates to achieve economic stability."
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الاعتمادات المستندية",
+    "title_en": "Letters of Credit",
+    "desc_ar": "تعهد كتابي صادر من البنك بضمان سداد قيمة البضائع للمستورد والمصدر وفق شروط متفق عليها.",
+    "desc_en": "A written undertaking issued by a bank guaranteeing payment for goods between importer and exporter according to terms."
   }
 ]
