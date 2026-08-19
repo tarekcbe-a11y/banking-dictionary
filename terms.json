@@ -4,15 +4,47 @@
     "category_en": "Central Bank",
     "title_ar": "سعر الفائدة الأساسي",
     "title_en": "Base Interest Rate",
-    "desc_ar": "السعر الذي يحدده البنك المركزي لتوجيه السياسة النقدية.",
-    "desc_en": "The rate set by the central bank to guide monetary policy."
+    "desc_ar": "السعر الذي يحدده البنك المركزي لتوجيه السياسة النقدية والتحكم في معدلات التضخم.",
+    "desc_en": "The rate set by the central bank to guide monetary policy and control inflation rates."
   },
   {
     "category_ar": "البنوك",
     "category_en": "Banks",
     "title_ar": "الاعتمادات المستندية",
     "title_en": "Letters of Credit",
-    "desc_ar": "تعهد كتابي من البنك بضمان سداد قيمة البضائع للمستورد.",
-    "desc_en": "A written undertaking by a bank guaranteeing payment for goods to the importer."
+    "desc_ar": "تعهد كتابي صادر من البنك بضمان سداد قيمة البضائع للمستورد وفق شروط محددة.",
+    "desc_en": "A written undertaking issued by a bank guaranteeing payment for goods to the importer according to specified terms."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "صناديق الاستثمار",
+    "title_en": "Investment Funds",
+    "desc_ar": "وعاء استثماري يجمع الأموال من عدة مستثمرين لشراء محفظة متنوعة من الأصول والأسهم.",
+    "desc_en": "An investment vehicle that pools money from multiple investors to purchase a diversified portfolio of assets and stocks."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "التسهيلات الائتمانية",
+    "title_en": "Credit Facilities",
+    "desc_ar": "مبالغ مالية يتيحها البنك للعميل (أفراد أو شركات) لمواجهة الاحتياجات التمويلية المختلفة.",
+    "desc_en": "Financial amounts provided by a bank to a customer (individuals or companies) to meet various financing needs."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "الاحتياطي النقدي الأجنبي",
+    "title_en": "Foreign Exchange Reserves",
+    "desc_ar": "الأصول بالعملات الأجنبية يحتفظ بها البنك المركزي لمواجهة الأزمات ودعم الاقتصاد.",
+    "desc_en": "Foreign currency assets held by the central bank to face crises and support the economy."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "أذون الخزانة",
+    "title_en": "Treasury Bills",
+    "desc_ar": "أدوات دين حكومية قصيرة الأجل تصدرها وزارة المالية لاقتراض الأموال من السوق.",
+    "desc_en": "Short-term government debt instruments issued by the Ministry of Finance to borrow money from the market."
   }
 ]
