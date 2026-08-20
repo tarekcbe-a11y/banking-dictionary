@@ -34,9 +34,9 @@
         }
         .header-top {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .lang-btn {
             background-color: var(--gold-color);
@@ -47,6 +47,19 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 14px;
+        }
+        /* مكان اللوجو الجديد */
+        .group-logo-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .group-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-color);
+            object-fit: cover;
+            background-color: var(--card-bg);
         }
         .site-title-area {
             text-align: center;
@@ -213,6 +226,11 @@
     <div class="main-wrapper">
         <div class="header-top">
             <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
+        </div>
+
+        <!-- مكان اللوجو الجديد -->
+        <div class="group-logo-container">
+            <img src="logo.png" alt="شعار الجروب" class="group-logo">
         </div>
 
         <div class="site-title-area">
