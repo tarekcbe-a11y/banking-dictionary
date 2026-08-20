@@ -34,7 +34,7 @@
         }
         .header-top {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
             margin-bottom: 20px;
         }
@@ -47,19 +47,6 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 14px;
-        }
-        .logo-placeholder {
-            width: 50px;
-            height: 50px;
-            border: 2px solid var(--gold-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: var(--gold-color);
-            text-align: center;
-            background: var(--card-bg);
         }
         .site-title-area {
             text-align: center;
@@ -226,7 +213,6 @@
     <div class="main-wrapper">
         <div class="header-top">
             <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
-            <div class="logo-placeholder" id="logoText">شعار</div>
         </div>
 
         <div class="site-title-area">
@@ -234,16 +220,16 @@
             <p class="subtitle" id="siteSubtitle">موسوعة المصطلحات المصرفية</p>
         </div>
 
-        <!-- شريط الأقسام الشاملة -->
+        <!-- شريط الأقسام بالترتيب المطلوب -->
         <div class="categories-bar" id="categoriesBar">
             <button class="cat-btn active" onclick="filterByCategory('all', this)" data-cat="all" data-ar="الكل" data-en="All">الكل</button>
             <button class="cat-btn" onclick="filterByCategory('البنك المركزي', this)" data-cat="البنك المركزي" data-ar="البنك المركزي" data-en="Central Bank">البنك المركزي</button>
-            <button class="cat-btn" onclick="filterByCategory('المؤسسات الدولية', this)" data-cat="المؤسسات الدولية" data-ar="المؤسسات الدولية" data-en="Int. Institutions">المؤسسات الدولية</button>
+            <button class="cat-btn" onclick="filterByCategory('البنوك', this)" data-cat="البنوك" data-ar="البنوك" data-en="Banks">البنوك</button>
             <button class="cat-btn" onclick="filterByCategory('الاستثمار', this)" data-cat="الاستثمار" data-ar="الاستثمار" data-en="Investment">الاستثمار</button>
             <button class="cat-btn" onclick="filterByCategory('البورصة', this)" data-cat="البورصة" data-ar="البورصة" data-en="Stock Exchange">البورصة</button>
             <button class="cat-btn" onclick="filterByCategory('التكنولوجيا المالية', this)" data-cat="التكنولوجيا المالية" data-ar="التكنولوجيا المالية" data-en="Fintech">التكنولوجيا المالية</button>
             <button class="cat-btn" onclick="filterByCategory('القروض', this)" data-cat="القروض" data-ar="القروض" data-en="Loans">القروض</button>
-            <button class="cat-btn" onclick="filterByCategory('البنوك', this)" data-cat="البنوك" data-ar="البنوك" data-en="Banks">البنوك</button>
+            <button class="cat-btn" onclick="filterByCategory('المؤسسات الدولية', this)" data-cat="المؤسسات الدولية" data-ar="المؤسسات الدولية" data-en="Int. Institutions">المؤسسات الدولية</button>
         </div>
 
         <div class="search-box-wrapper">
@@ -336,7 +322,6 @@
             if (!allTerms || allTerms.length === 0) return;
 
             const filtered = allTerms.filter(term => {
-                // الفلترة بالقسم بالعربي أو الإنجليزي لضمان التوافق التام
                 const matchesCategory = selectedCategory === 'all' || 
                     term.category_ar === selectedCategory || 
                     term.category_en === selectedCategory;
@@ -382,7 +367,6 @@
             document.getElementById('searchInput').setAttribute('placeholder', t.searchPlaceholder);
             document.getElementById('langToggleBtn').innerText = t.langBtn;
 
-            // تحديث نصوص أزرار الأقسام تلقائياً بين العربي والإنجليزي
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.innerText = btn.getAttribute(`data-${currentLang}`);
             });
