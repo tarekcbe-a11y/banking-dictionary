@@ -2638,5 +2638,409 @@
     "title_en": "Banking Penalties",
     "desc_ar": "إجراءات أو قيود قد تفرض نتيجة مخالفة القوانين أو التعليمات أو شروط التعامل.",
     "desc_en": "Procedures or restrictions that may be imposed due to violating laws, instructions, or terms."
+  },
+    ,
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "شهادات الإيداع البنكوية",
+    "title_en": "Central Bank Certificates of Deposit",
+    "desc_ar": "أوراق مالية تصدرها البنوك المركزية لامتصاص السيولة الزائدة بالأسواق والسيطرة على التضخم.",
+    "desc_en": "Securities issued by central banks to absorb excess liquidity in markets and control inflation."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "مؤشر أسعار المستهلكين",
+    "title_en": "Consumer Price Index (CPI)",
+    "desc_ar": "مؤشر اقتصادي يقيس التغيرات النسبية في أسعار سلة ثابتة من السلع والخدمات الاستهلاكية.",
+    "desc_en": "An economic indicator measuring relative changes in prices of a fixed basket of consumer goods and services."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الصراف الآلي",
+    "title_en": "Automated Teller Machine (ATM)",
+    "desc_ar": "جهاز إلكتروني يتيح لعملاء البنوك إجراء المعاملات النقدية والاستعلام عن الأرصدة ذاتياً.",
+    "desc_en": "An electronic device enabling bank customers to perform cash transactions and check balances independently."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "التحصيل المستندي",
+    "title_en": "Documentary Collection",
+    "desc_ar": "عملية يقوم فيها البنك بتسليم مستندات الشحن للمستورد مقابل السداد أو قبول كمبيالة.",
+    "desc_en": "A process where a bank delivers shipping documents to the importer against payment or acceptance of a draft."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "رأس المال المخاطر",
+    "title_en": "Venture Capital",
+    "desc_ar": "تمويل استثماري يُقدم للشركات الناشئة والصغيرة ذات النمو السريع والمخاطر المرتفعة.",
+    "desc_en": "Investment financing provided to startup and small businesses with rapid growth and high risk."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "الأسهم الممتازة",
+    "title_en": "Preferred Stocks",
+    "desc_ar": "أسهم تمنح أصحابها أولوية في الحصول على الأرباح الموزعة مقارنة بالأسهم العادية.",
+    "desc_en": "Stocks that grant their holders priority in receiving distributed dividends compared to common stocks."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "صناديق المؤشرات المتداولة",
+    "title_en": "Exchange Traded Funds (ETFs)",
+    "desc_ar": "صناديق استثمارية تتبع مؤشراً معيناً وتتداول في البورصة تماماً مثل الأسهم.",
+    "desc_en": "Investment funds that track a specific index and trade on the stock exchange just like stocks."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "القيمة الاسمية للسهم",
+    "title_en": "Par Value of a Share",
+    "desc_ar": "القيمة الأصلية للسهم عند تأسيس الشركة أو إصدار الأسهم لأول مرة.",
+    "desc_en": "The original value of a share when the company is established or shares are first issued."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القرض العقاري",
+    "title_en": "Mortgage Loan",
+    "desc_ar": "تمويل طويل الأجل مخصص لشراء عقار أو أرض بضمان العقار نفسه.",
+    "desc_en": "A long-term financing dedicated to purchasing real estate or land secured by the property itself."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "التمويل الإسلامي المرابحة",
+    "title_en": "Murabaha Financing",
+    "desc_ar": "صيغة تمويلية يشتري فيها البنك السلعة بناءً على طلب العميل ثم يبيعها له بربح معلوم ومؤجل.",
+    "desc_en": "A financing format where the bank purchases goods upon the customer's request and sells them with a known, deferred profit."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "بوابات الدفع الإلكتروني",
+    "title_en": "Payment Gateways",
+    "desc_ar": "تقنية تفوض مدفوعات المعاملات عبر الإنترنت للمتاجر الإلكترونية والمنصات الرقمية.",
+    "desc_en": "Technology that authorizes online transaction payments for e-commerce stores and digital platforms."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "الذكاء الاصطناعي المصرفي",
+    "title_en": "Banking Artificial Intelligence",
+    "desc_ar": "استخدام خوارزميات التعلم الآلي لتحليل سلوك العملاء والكشف عن عمليات الاحتيال المالي.",
+    "desc_en": "Using machine learning algorithms to analyze customer behavior and detect financial fraud."
+  },
+  {
+    "category_ar": "المؤسسات الدولية",
+    "category_en": "Int. Institutions",
+    "title_ar": "مؤسسة التمويل الدولية",
+    "title_en": "International Finance Corporation (IFC)",
+    "desc_ar": "عضو في مجموعة البنك الدولي تركز حصرياً على دعم القطاع الخاص في الدول النامية.",
+    "desc_en": "A member of the World Bank Group focused exclusively on supporting the private sector in developing countries."
+  },
+  {
+    "category_ar": "المؤسسات الدولية",
+    "category_en": "Int. Institutions",
+    "title_ar": "بنك التسويات الدولية",
+    "title_en": "Bank for International Settlements (BIS)",
+    "desc_ar": "مؤسسة دولية تعزز التعاون المالي والنقدي العالمي وتعتبر بنك المركزيات الدولية.",
+    "desc_en": "An international institution fostering global financial and monetary cooperation, acting as a bank for central banks."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "إدارة السيولة النقدية",
+    "title_en": "Liquidity Management",
+    "desc_ar": "الإجراءات اليومية التي يتخذها البنك المركزي للتحكم في حجم النقد المتداول بالقطاع المصرفي.",
+    "desc_en": "Daily actions taken by the central bank to control the volume of cash circulating in the banking sector."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الودائع الادخارية",
+    "title_en": "Savings Deposits",
+    "desc_ar": "حسابات مخصصة للأفراد تمنح عوائد دورية مع إمكانية السحب والإيداع بشروط ميسرة.",
+    "desc_en": "Accounts designated for individuals providing periodic returns with accessible deposit and withdrawal terms."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "محفظة الأصول المتنوعة",
+    "title_en": "Multi-Asset Portfolio",
+    "desc_ar": "محفظة استثمارية تشمل أصولاً مختلفة مثل الأسهم، السندات، والعقارات لتوزيع المخاطر.",
+    "desc_en": "An investment portfolio including different assets like stocks, bonds, and real estate to spread risk."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "تجزئة الأسهم",
+    "title_en": "Stock Split",
+    "desc_ar": "إجراء تقوم به الشركة لزيادة عدد الأسهم المصدرة مع تخفيض قيمتها الاسمية بنفس النسبة.",
+    "desc_en": "An action taken by a company to increase the number of issued shares while reducing their par value proportionally."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القروض المشتركة",
+    "title_en": "Syndicated Loans",
+    "desc_ar": "قروض ضخمة يشارك في تمويلها مجموعة من البنوك لتقاسم المخاطر المرتبطة بالمشروع.",
+    "desc_en": "Large loans funded by a group of banks to share the risks associated with the project."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "التمويل الجماعي",
+    "title_en": "Crowdfunding",
+    "desc_ar": "جمع الأموال لمشروع معين من خلال مساهمات عدد كبير من الأفراد عبر الإنترنت.",
+    "desc_en": "Raising funds for a specific project through contributions from a large number of individuals online."
+  },
+  {
+    "category_ar": "المؤسسات الدولية",
+    "category_en": "Int. Institutions",
+    "title_ar": "وكالات التصنيف الائتماني",
+    "title_en": "Credit Rating Agencies",
+    "desc_ar": "شركات عالمية تقيم الجدارة الائتمانية للدول والشركات وقدرتها على سداد ديونها.",
+    "desc_en": "Global companies evaluating the creditworthiness of countries and corporations and their ability to repay debts."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "خطابات الضمان المصرفية",
+    "title_en": "Bank Guarantees",
+    "desc_ar": "تعهد مكتوب يصدر من البنك بناءً على طلب العميل لدفع مبلغ محدد للطرف المستفيد عند الطلب.",
+    "desc_en": "A written undertaking issued by a bank at the customer's request to pay a specific amount to a beneficiary upon demand."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الصرافة الإسلامية",
+    "title_en": "Islamic Banking",
+    "desc_ar": "نظام مصرفي يتوافق مع أحكام الشريعة الإسلامية ويحظر التعامل بالفوائد الربوية.",
+    "desc_en": "A banking system compliant with Islamic Sharia law that prohibits dealing in interest."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "العائد السنوي المركب",
+    "title_en": "Compound Annual Growth Rate (CAGR)",
+    "desc_ar": "معدل العائد السنوي الذي يفسر نمو الاستثمار على مدى فترة تزيد عن سنة.",
+    "desc_en": "The annual growth rate that accounts for an investment's growth over a period longer than one year."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "صانع السوق",
+    "title_en": "Market Maker",
+    "desc_ar": "مؤسسة أو فرد يضمن توفير السيولة في السوق عبر عرض أسعار الشراء والبيع بانتظام.",
+    "desc_en": "An institution or individual ensuring market liquidity by regularly quoting buying and selling prices."
+  } ,
+  
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "النافذة الخصم اليومية",
+    "title_en": "Daily Discount Window",
+    "desc_ar": "آلية تتيح للبنوك الاقتراض قصيرة الأجل مباشرة من البنك المركزي لمواجهة احتياجات السيولة الطارئة.",
+    "desc_en": "A mechanism allowing banks to borrow short-term directly from the central bank to meet emergency liquidity needs."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "التيسير الكمي",
+    "title_en": "Quantitative Easing",
+    "desc_ar": "سياسة نقدية غير تقليدية يستخدمها البنك المركزي لضخ السيولة في الاقتصاد عبر شراء أصول مالية واسعة النطاق.",
+    "desc_en": "An unconventional monetary policy used by the central bank to inject liquidity into the economy by purchasing large-scale financial assets."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تبييض الأموال",
+    "title_en": "Money Laundering",
+    "desc_ar": "عملية إخفاء المصدر غير القانوني للأموال لتظهر كأنها مكتسبة من مصادر شرعية.",
+    "desc_en": "The process of concealing the illegal source of funds to make them appear derived from legitimate sources."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "تمويل التجارة الدولية",
+    "title_en": "International Trade Finance",
+    "desc_ar": "حزمة المنتجات والخدمات المصرفية التي تسهل عمليات الاستيراد والتصدير بين الدول.",
+    "desc_en": "The package of banking products and services that facilitates import and export operations between countries."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "السندات الحكومية",
+    "title_en": "Government Bonds",
+    "desc_ar": "أوراق دين تصدرها الحكومة لتمويل عجز الموازنة وتمنح المستثمرين عائداً دورياً.",
+    "desc_en": "Debt securities issued by the government to finance budget deficits, providing investors with periodic returns."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "صناديق المعاشات التقاعدية",
+    "title_en": "Pension Funds",
+    "desc_ar": "أوعية استثمارية ضخمة تجمع اشتراكات الموظفين لاستثمارها وصرفها كمعاشات عند التقاعد.",
+    "desc_en": "Large investment vehicles pooling employee contributions to invest and pay out as retirement pensions."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "حظر التداول",
+    "title_en": "Trading Halt",
+    "desc_ar": "تعليق مؤقت لتداول سهم معين أو السوق بالكامل بناءً على أحداث جوهرية أو تقلبات حادة.",
+    "desc_en": "A temporary suspension of trading in a specific stock or the entire market due to material events or sharp volatility."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "عقود الخيارات",
+    "title_en": "Options Contracts",
+    "desc_ar": "مشتقات مالية تمنح المشتري الحق، وليس الالتزام، بشراء أو بيع أصل بسعر محدد مسبقاً.",
+    "desc_en": "Financial derivatives giving the buyer the right, but not the obligation, to buy or sell an asset at a predetermined price."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "جدولة الديون",
+    "title_en": "Debt Rescheduling",
+    "desc_ar": "إعادة ترتيب مواعيد وأقساط سداد القروض لتخفيف العبء المالي عن المقترض المتعثر.",
+    "desc_en": "Rearranging loan repayment schedules and installments to ease the financial burden on a struggling borrower."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "الضمانات البنكية العينية",
+    "title_en": "Collateral Security",
+    "desc_ar": "أصول أو ممتلكات يقدمها المقترض للبنك كرهن لضمان سداد التمويل في موعده.",
+    "desc_en": "Assets or properties provided by the borrower to the bank as security to ensure timely loan repayment."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "التصديق الرقمي",
+    "title_en": "Digital Authentication",
+    "desc_ar": "تقنيات التحقق من هوية المستخدمين رقمياً باستخدام البصمة أو التعرف على الوجه في التطبيقات البنكية.",
+    "desc_en": "Digital user identity verification technologies using fingerprints or facial recognition in banking apps."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "العقود الذكية",
+    "title_en": "Smart Contracts",
+    "desc_ar": "برمجيات تلقائية تنفذ شروط العقد المالي بنفسها فور تحقق شروط محددة مسبقاً عبر تقنية البلوكشين.",
+    "desc_en": "Automatic software executing financial contract terms itself once predefined conditions are met via blockchain technology."
+  },
+  {
+    "category_ar": "المؤسسات الدولية",
+    "category_en": "Int. Institutions",
+    "title_ar": "نادي باريس",
+    "title_en": "Paris Club",
+    "desc_ar": "مجموعة من الدول الدائنة الكبرى تسعى لإيجاد حلول جماعية لمشاكل ديون الدول النامية.",
+    "desc_en": "A group of major creditor countries seeking coordinated solutions to developing nations' debt problems."
+  },
+  {
+    "category_ar": "المؤسسات الدولية",
+    "category_en": "Int. Institutions",
+    "title_ar": "مجموعة الأربعطشر الاقتصادية",
+    "title_en": "Group of Twenty (G20)",
+    "desc_ar": "منتدى يضم أكبر اقتصاديات العالم لمناقشة التعاون المالي والاقتصادي الدولي.",
+    "desc_en": "A forum comprising the world's major economies to discuss international financial and economic cooperation."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "إدارة الاحتياطيات الدولية",
+    "title_en": "International Reserves Management",
+    "desc_ar": "السياسات التي ينتهجها البنك المركزي لتوظيف وإدارة أصوله من العملات الأجنبية والذهب بأمان.",
+    "desc_en": "Policies pursued by the central bank to safely invest and manage its foreign currency and gold assets."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الحسابات الراكدة",
+    "title_en": "Dormant Accounts",
+    "desc_ar": "الحسابات المصرفية التي لم تشهد أي عمليات سحب أو إيداع لفترة زمنية طويلة نسبياً.",
+    "desc_en": "Bank accounts that have not experienced any deposit or withdrawal transactions for a relatively long period."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "صناديق التحوط",
+    "title_en": "Hedge Funds",
+    "desc_ar": "صناديق استثمارية خاصة تستخدم استراتيجيات معقدة لتحقيق عوائد عالية لمستثمريها الأثرياء.",
+    "desc_en": "Private investment funds using complex strategies to achieve high returns for wealthy investors."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "تداول من الداخل",
+    "title_en": "Insider Trading",
+    "desc_ar": "شراء أو بيع الأوراق المالية بناءً على معلومات جوهرية غير معلنة للجمهور، وهو عمل غير قانوني.",
+    "desc_en": "Buying or selling securities based on material non-public information, which is illegal."
+  },
+  {
+    "category_ar": "القروض",
+    "category_en": "Loans",
+    "title_ar": "القروض الاستهلاكية",
+    "title_en": "Consumer Loans",
+    "desc_ar": "تمويلات موجهة للأفراد لشراء سلع استهلاكية معمرة كالسيارات والأجهزة الكهربائية.",
+    "desc_en": "Financing directed at individuals to purchase durable consumer goods like cars and home appliances."
+  },
+  {
+    "category_ar": "التكنولوجيا المالية",
+    "category_en": "Fintech",
+    "title_ar": "الروبوت المستشار المالي",
+    "title_en": "Robo-Advisor",
+    "desc_ar": "منصات رقمية تستخدم خوارزميات الذكاء الاصطناعي لإدارة المحافظ الاستثمارية وتقديم النصائح تلقائياً.",
+    "desc_en": "Digital platforms using AI algorithms to manage investment portfolios and provide automated advice."
+  },
+  {
+    "category_ar": "المؤسسات الدولية",
+    "category_en": "Int. Institutions",
+    "title_ar": "منظمة التجارة العالمية",
+    "title_en": "World Trade Organization (WTO)",
+    "desc_ar": "منظمة دولية تشرف على القواعد التجارية بين الدول وفض المنازعات التجارية العالمية.",
+    "desc_en": "An international organization overseeing trade rules between nations and resolving global trade disputes."
+  },
+  {
+    "category_ar": "البنك المركزي",
+    "category_en": "Central Bank",
+    "title_ar": "مقاصة الشيكات الإلكترونية",
+    "title_en": "Electronic Check Clearing",
+    "desc_ar": "النظام الرقمي الذي يتيح تحصيل وتسوية الشيكات البنكية بسرعة دون الحاجة لنقل الورق ماديًا.",
+    "desc_en": "The digital system enabling rapid collection and settlement of bank checks without physical paper transfer."
+  },
+  {
+    "category_ar": "البنوك",
+    "category_en": "Banks",
+    "title_ar": "الإقراض بين البنوك",
+    "title_en": "Interbank Lending",
+    "desc_ar": "سوق يقترض فيه البنوك من بعضها البعض لفترات قصيرة جداً لتغطية العجز المؤقت في السيولة.",
+    "desc_en": "A market where banks borrow from each other for very short periods to cover temporary liquidity deficits."
+  },
+  {
+    "category_ar": "الاستثمار",
+    "category_en": "Investment",
+    "title_ar": "الأسهم الدورية",
+    "title_en": "Cyclical Stocks",
+    "desc_ar": "أسهم شركات تتبع أرباحها دورة الاقتصاد صعوداً وهبوطاً ارتباطاً بالوضع الاقتصادي العام.",
+    "desc_en": "Stocks of companies whose earnings follow the economic cycle up and down in correlation with general economic conditions."
+  },
+  {
+    "category_ar": "البورصة",
+    "category_en": "Stock Exchange",
+    "title_ar": "القيمة السوقية للشركة",
+    "title_en": "Market Capitalization",
+    "desc_ar": "إجمالي القيمة النقدية لأسهم الشركة المصدرة وتُحسب بضرب سعر السهم في عدد الأسهم الكلي.",
+    "desc_en": "The total monetary value of a company's issued shares, calculated by multiplying the share price by total shares."
   }
 ]
+
+
