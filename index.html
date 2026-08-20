@@ -32,7 +32,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             box-sizing: border-box;
         }
-        /* الهيدر: زر الترجمة في طرف واللوجو في الطرف العكسي تماماً */
+        /* الهيدر: زر الترجمة في طرف واللوجو في الطرف العكسي تماماً وبدون دائرة */
         .header-top {
             display: flex;
             justify-content: space-between;
@@ -50,12 +50,11 @@
             font-size: 13px;
         }
         .group-logo {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: 2px solid var(--gold-color);
-            object-fit: cover;
-            background-color: var(--card-bg);
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            background: transparent;
+            border: none;
         }
         .site-title-area {
             text-align: center;
@@ -220,7 +219,7 @@
 <body>
 
     <div class="main-wrapper">
-        <!-- الهيدر: زر الترجمة في طرف واللوجو في الطرف المقابل تماماً -->
+        <!-- الهيدر: زر الترجمة واللوجو في نفس السطر بعكس الاتجاه وبدون أي دوائر -->
         <div class="header-top" id="headerTop">
             <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
             <img src="logo.png" alt="شعار الجروب" class="group-logo" id="groupLogo">
@@ -378,7 +377,7 @@
             document.getElementById('searchInput').setAttribute('placeholder', t.searchPlaceholder);
             document.getElementById('langToggleBtn').innerText = t.langBtn;
 
-            // عكس أماكن اللوجو وزر الترجمة تماماً مع تغيير اللغة (كل واحد في طرف)
+            // تحديث الترتيب العكسي للوجو وزر الترجمة عند تغيير اللغة
             const headerTop = document.getElementById('headerTop');
             const langBtn = document.getElementById('langToggleBtn');
             const groupLogo = document.getElementById('groupLogo');
