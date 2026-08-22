@@ -3041,13 +3041,8 @@
     "desc_ar": "إجمالي القيمة النقدية لأسهم الشركة المصدرة وتُحسب بضرب سعر السهم في عدد الأسهم الكلي.",
     "desc_en": "The total monetary value of a company's issued shares, calculated by multiplying the share price by total shares."
   },
- 
-{
-  "category_ar": "الحسابات البنكية",
-  
-  "title_en": "Financial Technology (FinTech)".
-}
-]
+] 
+
 
 
 
