@@ -3040,7 +3040,16 @@
     "title_en": "Market Capitalization",
     "desc_ar": "إجمالي القيمة النقدية لأسهم الشركة المصدرة وتُحسب بضرب سعر السهم في عدد الأسهم الكلي.",
     "desc_en": "The total monetary value of a company's issued shares, calculated by multiplying the share price by total shares."
-  }
+  }ء
+  ... (آخر عنصر قديم عندك)
+},
+{
+  "category_ar": "الحسابات البنكية",
+  ... (باقي العناصر الجديدة)
+  "title_en": "Financial Technology (FinTech)"
+}
 ]
+
+
 
 
